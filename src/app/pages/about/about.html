@@ -1,0 +1,142 @@
+<main class="about-page">
+  <section class="page-hero bg-grid">
+    <div class="radial-glow"></div>
+    <div class="container hero-content text-center">
+      <span class="badge badge-brand">Our Ethos & Origin</span>
+      <h1 class="page-title">Pioneering Strategic <span class="text-gradient-brand">HR & Executive Solutions</span></h1>
+      <p class="page-subtitle">
+        Headquartered at Meydan Garndstand in Dubai, TruePath ventures L.L.C-FZ bridges the gap between ambitious enterprises and transformational executive and HR talent.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission & Vision Section -->
+  <section class="section">
+    <div class="container">
+      <div class="story-grid card-glass">
+        <div class="story-content">
+          <span class="badge badge-cyan">Why We Built TruePath</span>
+          <h2>Redefining HR Solutions for Modern Global Enterprises</h2>
+          <p>
+            Traditional staffing agencies rely on generic keyword-stuffed resume matching, aggressive contingency spam, and zero strategic comprehension.
+          </p>
+          <p>
+            We founded TruePath HR Solutions with a singular conviction: **hiring excellence requires deep organizational immersion**. Our partners and consultants understand how human capital velocity, executive alignment, and cultural resilience drive market-leading performance across Dubai, the GCC, and international corridors.
+          </p>
+          <div class="story-stats-row">
+            <div class="story-stat">
+              <div class="val text-gradient-brand">1,200+</div>
+              <div class="lbl">Executives & HR Placements</div>
+            </div>
+            <div class="story-stat">
+              <div class="val text-gradient-brand">98.4%</div>
+              <div class="lbl">2-Year Retention Rate</div>
+            </div>
+            <div class="story-stat">
+              <div class="val text-gradient-brand">14 Days</div>
+              <div class="lbl">Avg. Shortlist Delivery</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-highlights-box">
+          <h3>The TruePath Standard</h3>
+          <ul class="standard-list">
+            <li>
+              <strong>01. Direct Partner Lead:</strong> Every mandate is personally managed by a Senior Practice Partner, never handed off to junior coordinators.
+            </li>
+            <li>
+              <strong>02. Executive Market Mapping:</strong> Proprietary talent databases tracking high-impact passive HR directors and C-suite leaders.
+            </li>
+            <li>
+              <strong>03. 12-Month Executive SLA:</strong> Industry-leading replacement guarantee safeguarding your strategic talent investment.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="badge badge-emerald">Guiding Principles</span>
+        <h2>Our Core Values & Commitments</h2>
+        <p class="section-desc">The principles that govern our client partnerships and candidate stewardship.</p>
+      </div>
+
+      <div class="values-grid">
+        @for (v of coreValues(); track v.title) {
+          <div class="value-card card-glass">
+            <div class="value-title-row">
+              <h3>{{ v.title }}</h3>
+            </div>
+            <p class="value-desc">{{ v.desc }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Team -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="badge badge-brand">Partner Leadership</span>
+        <h2>Meet Our Managing Partners</h2>
+        <p class="section-desc">Seasoned talent partners with decades of combined experience across global tech hubs.</p>
+      </div>
+
+      <div class="leadership-grid">
+        @for (member of leadershipTeam(); track member.name) {
+          <div class="leader-card card-glass">
+            <div class="avatar-wrap">
+              <img [src]="member.avatar" [alt]="member.name" class="leader-avatar">
+            </div>
+            <div class="leader-info">
+              <h3 class="leader-name">{{ member.name }}</h3>
+              <div class="leader-role">{{ member.role }}</div>
+              <div class="leader-practice">{{ member.practice }}</div>
+              <p class="leader-bio">{{ member.bio }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Presence Strip -->
+  <section class="section bg-grid">
+    <div class="container">
+      <div class="global-map-card card-glass text-center">
+        <span class="badge badge-cyan">Global Footprint</span>
+        <h2>Operating in Premier Technology Capital Corridors</h2>
+        <p>With established practice hubs in North America, Europe, the Middle East, and Asia Pacific.</p>
+        
+        <div class="hubs-grid">
+          <div class="hub-item">
+            <div class="hub-city">San Francisco</div>
+            <div class="hub-focus">AI, Cloud & Venture Scale</div>
+          </div>
+          <div class="hub-item">
+            <div class="hub-city">New York</div>
+            <div class="hub-focus">Fintech, Data & Enterprise SaaS</div>
+          </div>
+          <div class="hub-item">
+            <div class="hub-city">London</div>
+            <div class="hub-focus">European Tech & ClimateTech</div>
+          </div>
+          <div class="hub-item">
+            <div class="hub-city">Singapore</div>
+            <div class="hub-focus">APAC Expansion & Logistics</div>
+          </div>
+          <div class="hub-item">
+            <div class="hub-city">Dubai</div>
+            <div class="hub-focus">MENA & Sovereign Tech Funds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

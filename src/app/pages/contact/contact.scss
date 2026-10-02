@@ -1,0 +1,240 @@
+.contact-ref-page {
+  background-color: var(--bg-subtle);
+  min-height: 100vh;
+}
+
+.ref-hero-sub {
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  padding: 2.5rem 0 3.5rem;
+
+  .ref-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #aaaaaa;
+    margin-bottom: 2rem;
+
+    a {
+      color: #ffffff;
+      &:hover { color: var(--brand-coral); }
+    }
+
+    .bc-sep { color: #666; }
+    .bc-current { color: #ffffff; font-weight: 600; }
+  }
+
+  .page-main-heading {
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+  }
+
+  .page-main-sub {
+    font-size: 1.1rem;
+    color: #cccccc;
+    max-width: 750px;
+    line-height: 1.5;
+  }
+}
+
+.form-body-section {
+  padding: 3.5rem 0 6rem;
+}
+
+.contact-dual-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+}
+
+.form-card-white {
+  background: #ffffff;
+  border: 1px solid var(--bg-card-border);
+  padding: 3rem;
+  border-radius: var(--radius-xs);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+
+  .form-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-intro-text {
+    font-size: 0.95rem;
+    color: var(--text-dark-secondary);
+    margin-bottom: 2rem;
+  }
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.contact-side-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.side-info-card {
+  background: #ffffff;
+  border: 1px solid var(--bg-card-border);
+  padding: 2.5rem;
+  border-radius: var(--radius-xs);
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--text-dark-secondary);
+    margin-bottom: 1.75rem;
+  }
+}
+
+.contact-quick-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .quick-item {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 1.25rem;
+
+    &.highlight-dubai {
+      background: #f0f7ff;
+      border: 1px solid #bae0fd;
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      position: relative;
+    }
+
+    .hq-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #0b3359;
+      background: #dbeafe;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    strong {
+      font-size: 1rem;
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      font-size: 0.88rem;
+      color: var(--text-dark-secondary);
+      margin-bottom: 0.4rem;
+    }
+
+    .phone-link {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      display: block;
+    }
+
+    .email-link {
+      font-size: 0.82rem;
+      color: var(--text-dark-secondary);
+      display: block;
+      margin-top: 0.2rem;
+    }
+  }
+}
+
+.side-candidate-banner {
+  background: var(--bg-dark);
+  color: #ffffff;
+  padding: 2.5rem;
+  border-radius: var(--radius-xs);
+
+  h4 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 2000;
+}
+
+.ref-modal-card {
+  background: #ffffff;
+  max-width: 500px;
+  width: 100%;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  border-radius: var(--radius-xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .modal-badge-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #16a34a;
+    font-size: 1.8rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h2 { font-size: 1.6rem; }
+  .modal-sub { font-size: 0.95rem; color: var(--text-dark-secondary); }
+}
+
+@media (max-width: 1024px) {
+  .contact-dual-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-card-white {
+    padding: 1.5rem;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}

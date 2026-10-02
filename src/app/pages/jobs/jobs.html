@@ -1,0 +1,137 @@
+<main class="jobs-ref-page">
+
+  <!-- Hero Header -->
+  <section class="ref-hero-sub">
+    <div class="container">
+      <div class="ref-breadcrumb">
+        <a routerLink="/">Home</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Jobs</span>
+      </div>
+      <h1 class="page-main-heading">HR & Leadership Jobs</h1>
+      <p class="page-main-sub">
+        Explore current human resources, talent acquisition, and people leadership opportunities with top global organisations.
+      </p>
+
+      <!-- Filter Bar -->
+      <div class="jobs-search-bar">
+        <div class="search-input-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input 
+            type="text" 
+            [(ngModel)]="query" 
+            (ngModelChange)="onFilterChange()" 
+            placeholder="Search by role or keyword..." 
+            class="job-search-input">
+        </div>
+
+        <div class="search-select-wrap">
+          <select [(ngModel)]="department" (ngModelChange)="onFilterChange()" class="job-search-select">
+            <option value="">All Disciplines</option>
+            <option value="Executive">Executive & Leadership</option>
+            <option value="People & HR">Human Resources</option>
+            <option value="Engineering">Tech & Engineering</option>
+            <option value="Product">Product & Design</option>
+          </select>
+        </div>
+
+        <button type="button" (click)="resetFilters()" class="btn btn-outline btn-sm reset-btn">
+          Reset
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jobs List Section -->
+  <section class="jobs-list-section">
+    <div class="container">
+      <div class="jobs-count-text">
+        Showing <strong>{{ talentService.filteredJobs().length }}</strong> open positions
+      </div>
+
+      <div class="jobs-grid-3">
+        @for (job of talentService.filteredJobs(); track job.id) {
+          <div class="job-card-ref">
+            <div class="job-card-header">
+              <span class="job-tag">{{ job.department }}</span>
+              <span class="job-location">{{ job.location }}</span>
+            </div>
+            <h3 class="job-card-title">{{ job.title }}</h3>
+            <div class="job-salary-line">{{ job.salaryRange }}</div>
+            <p class="job-card-desc">{{ job.overview }}</p>
+            <div class="job-card-actions">
+              <button 
+                type="button" 
+                (click)="applyForJob(job)" 
+                class="btn btn-coral btn-sm">
+                Apply Now
+              </button>
+              <button 
+                type="button" 
+                (click)="openJobDetails(job)" 
+                class="link-underlined link-btn">
+                View details
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- CV Registration Callout Box -->
+      <div class="jobs-cv-callout">
+        <div class="cv-callout-text">
+          <h3>Can't find what you're looking for?</h3>
+          <p>Register your CV so our HR recruitment consultants can match you with upcoming and unlisted opportunities.</p>
+        </div>
+        <a routerLink="/submit-cv" class="btn btn-coral">Register your CV</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Job Modal Details -->
+  @if (selectedJob(); as job) {
+    <div class="modal-overlay" (click)="closeJobDetails()">
+      <div class="job-detail-modal" (click)="$event.stopPropagation()">
+        <button type="button" class="close-x-btn" (click)="closeJobDetails()" aria-label="Close modal">×</button>
+        
+        <div class="modal-top">
+          <span class="job-tag">{{ job.department }} • {{ job.workType }}</span>
+          <h2>{{ job.title }}</h2>
+          <div class="modal-meta-line">{{ job.location }} • {{ job.salaryRange }}</div>
+        </div>
+
+        <div class="modal-scroll-area">
+          <div class="modal-sec">
+            <h4>Overview</h4>
+            <p>{{ job.overview }}</p>
+          </div>
+
+          <div class="modal-sec">
+            <h4>Key Responsibilities</h4>
+            <ul class="job-req-list">
+              @for (resp of job.responsibilities; track resp) {
+                <li>{{ resp }}</li>
+              }
+            </ul>
+          </div>
+
+          <div class="modal-sec">
+            <h4>Profile & Qualifications</h4>
+            <ul class="job-req-list">
+              @for (req of job.requirements; track req) {
+                <li>{{ req }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <div class="modal-action-bar">
+          <button type="button" class="btn btn-outline" (click)="closeJobDetails()">Close</button>
+          <button type="button" class="btn btn-coral" (click)="applyForJob(job)">Apply for this role</button>
+        </div>
+      </div>
+    </div>
+  }
+
+</main>

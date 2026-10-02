@@ -1,0 +1,213 @@
+<main class="submit-cv-ref-page">
+  
+  <!-- Hero Dark Header -->
+  <section class="ref-hero-sub">
+    <div class="container">
+      <div class="ref-breadcrumb">
+        <a routerLink="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a routerLink="/jobs">Candidates</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Register your CV</span>
+      </div>
+      <h1 class="page-main-heading">Register your CV</h1>
+      <p class="page-main-sub">
+        Register your CV with us so we can get to know the real you. Our specialist HR recruitment consultants will review your profile for active and upcoming roles.
+      </p>
+    </div>
+  </section>
+
+  <!-- Form Container -->
+  <section class="form-body-section">
+    <div class="container container-form">
+      
+      <div class="form-card-white">
+        <form [formGroup]="applicationForm" (ngSubmit)="onSubmitApplication()">
+          
+          <!-- Step 1: Personal Details -->
+          <div class="form-block">
+            <h2 class="block-title">1. Personal details</h2>
+            
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Full name <span class="required">*</span></label>
+                <input type="text" formControlName="fullName" class="form-input" placeholder="e.g. John Smith">
+                @if (applicationForm.get('fullName')?.touched && applicationForm.get('fullName')?.errors) {
+                  <span class="form-error">Please enter your full name.</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Email address <span class="required">*</span></label>
+                <input type="email" formControlName="email" class="form-input" placeholder="e.g. john.smith@example.com">
+                @if (applicationForm.get('email')?.touched && applicationForm.get('email')?.errors) {
+                  <span class="form-error">Please enter a valid email address.</span>
+                }
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Phone number <span class="required">*</span></label>
+                <input type="tel" formControlName="phone" class="form-input" placeholder="e.g. +49 170 1234567">
+                @if (applicationForm.get('phone')?.touched && applicationForm.get('phone')?.errors) {
+                  <span class="form-error">Please enter your contact phone number.</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Current location <span class="required">*</span></label>
+                <input type="text" formControlName="location" class="form-input" placeholder="e.g. Frankfurt, Germany / London, UK">
+                @if (applicationForm.get('location')?.touched && applicationForm.get('location')?.errors) {
+                  <span class="form-error">Location is required.</span>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Role & Experience -->
+          <div class="form-block">
+            <h2 class="block-title">2. Professional preferences</h2>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Current job title <span class="required">*</span></label>
+                <input type="text" formControlName="currentRole" class="form-input" placeholder="e.g. HR Manager">
+                @if (applicationForm.get('currentRole')?.touched && applicationForm.get('currentRole')?.errors) {
+                  <span class="form-error">Current job title is required.</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Desired job title / target role <span class="required">*</span></label>
+                <input type="text" formControlName="desiredRole" class="form-input" placeholder="e.g. Senior HR Business Partner">
+                @if (applicationForm.get('desiredRole')?.touched && applicationForm.get('desiredRole')?.errors) {
+                  <span class="form-error">Target role is required.</span>
+                }
+              </div>
+            </div>
+
+            <div class="form-row-3">
+              <div class="form-group">
+                <label class="form-label">Primary discipline <span class="required">*</span></label>
+                <select formControlName="industry" class="form-select">
+                  <option value="Human Resources">Human Resources & People</option>
+                  <option value="Talent Acquisition">Talent Acquisition & Staffing</option>
+                  <option value="Payroll & Rewards">Payroll, Comp & Benefits</option>
+                  <option value="HR Leadership">Executive & HR Leadership</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Experience level <span class="required">*</span></label>
+                <select formControlName="seniorityLevel" class="form-select">
+                  <option value="Entry / Specialist">Specialist (2-5 yrs)</option>
+                  <option value="Senior">Senior Specialist (5-8 yrs)</option>
+                  <option value="Lead / Manager">Manager / Head of HR</option>
+                  <option value="VP / C-Level">HR Director / VP / CHRO</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Target compensation <span class="required">*</span></label>
+                <input type="text" formControlName="expectedSalary" class="form-input" placeholder="e.g. €75,000 - €90,000 / yr">
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: CV / Resume File Upload -->
+          <div class="form-block">
+            <h2 class="block-title">3. Upload your CV <span class="required">*</span></h2>
+            
+            <div 
+              class="ref-dropzone" 
+              [class.dragover]="isDragging()"
+              [class.has-file]="selectedFile()"
+              (drop)="onFileDropped($event)"
+              (dragover)="onDragOver($event)"
+              (dragleave)="onDragLeave($event)">
+              
+              @if (!selectedFile()) {
+                <div class="dropzone-content">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#777777" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  <p class="dropzone-main-text">Drag and drop your CV file here</p>
+                  <p class="dropzone-sub-text">Supported formats: PDF, DOC, DOCX (Max 10MB)</p>
+                  
+                  <label class="btn btn-outline btn-sm browse-btn">
+                    Browse files
+                    <input type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx" class="hidden-input">
+                  </label>
+                </div>
+              } @else {
+                <div class="file-chosen-box">
+                  <div class="file-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  </div>
+                  <div class="file-info-text">
+                    <div class="chosen-name">{{ fileName() }}</div>
+                    <div class="chosen-size">{{ fileSize() }} • Ready to submit</div>
+                  </div>
+                  <button type="button" class="btn-remove" (click)="removeFile()">Remove</button>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Step 4: Additional Notes & Consent -->
+          <div class="form-block">
+            <h2 class="block-title">4. Additional comments & privacy</h2>
+
+            <div class="form-group">
+              <label class="form-label">Cover note / What you are looking for (optional)</label>
+              <textarea formControlName="coverNote" class="form-textarea" placeholder="Describe your career goals, preferred work culture, or notice period..."></textarea>
+            </div>
+
+            <div class="consent-box">
+              <label class="consent-label">
+                <input type="checkbox" formControlName="consentData">
+                <span>I agree that TruePath HR Solutions (TruePath ventures L.L.C-FZ) may process my personal details and CV for recruitment purposes in accordance with the Privacy Policy.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="submit-action-row">
+            <button type="submit" class="btn btn-coral btn-lg submit-btn">
+              Register your CV
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Confirmation Modal -->
+  @if (submissionSuccess(); as app) {
+    <div class="modal-overlay" (click)="closeSuccessModal()">
+      <div class="ref-modal-card" (click)="$event.stopPropagation()">
+        <div class="modal-badge-icon">
+          ✓
+        </div>
+        <h2>Thank you for registering your CV</h2>
+        <p class="modal-sub">
+          We have received your application. Your candidate registration reference is:
+        </p>
+
+        <div class="ref-number-box">
+          {{ app.referenceCode }}
+        </div>
+
+        <p class="modal-note">
+          One of our specialized HR recruitment consultants will review your CV and be in touch as soon as a suitable opportunity arises.
+        </p>
+
+        <button type="button" class="btn btn-dark w-full" (click)="closeSuccessModal()">
+          Close
+        </button>
+      </div>
+    </div>
+  }
+
+</main>

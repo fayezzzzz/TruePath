@@ -1,0 +1,273 @@
+/* ==========================================================================
+   HR Recruitment Portal - Design System (Inspired by Reference Design)
+   ========================================================================== */
+
+:root {
+  /* Core Colors */
+  --bg-dark: #0b2540;
+  --bg-dark-card: #133353;
+  --bg-light: #ffffff;
+  --bg-subtle: #f5f8fc;
+  --bg-card-border: #e2e8f0;
+  
+  /* TruePath Letterhead Brand Colors */
+  --brand-primary: #0b3359;          /* Letterhead Deep Navy */
+  --brand-blue: #1e6fd9;             /* Letterhead Vibrant Royal Blue */
+  --brand-blue-hover: #1557b0;       /* Darker Blue Hover */
+  --brand-blue-light: #eaf2fc;       /* Soft Blue Tint */
+  --brand-cyan: #3d8ec9;             /* Letterhead Sky Accent */
+  --brand-cyan-light: #e0f2fe;
+
+  /* Backward-compatible accent variables mapped to TruePath Blue */
+  --brand-coral: #1e6fd9;
+  --brand-coral-hover: #1557b0;
+  --brand-coral-light: #eaf2fc;
+  --brand-coral-subtle: rgba(30, 111, 217, 0.12);
+
+  /* Typography Colors */
+  --text-dark: #0f172a;
+  --text-dark-secondary: #475569;
+  --text-dark-muted: #64748b;
+  --text-light: #ffffff;
+  --text-light-secondary: #cbd5e1;
+  --text-light-muted: #94a3b8;
+
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  
+  /* Layout */
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-dark);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; }
+h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; }
+h4 { font-size: 1.1rem; font-weight: 700; }
+
+p {
+  color: var(--text-dark-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-main);
+  border-radius: var(--radius-xs);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.btn-coral,
+.btn-primary,
+.btn-blue {
+  background-color: var(--brand-blue);
+  color: #ffffff !important;
+}
+
+.btn-coral:hover,
+.btn-primary:hover,
+.btn-blue:hover {
+  background-color: var(--brand-blue-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 111, 217, 0.25);
+}
+
+.btn-dark {
+  background-color: var(--brand-primary);
+  color: #ffffff !important;
+}
+
+.btn-dark:hover {
+  background-color: #061e36;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--brand-primary);
+  color: var(--brand-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+}
+
+/* Letterhead Top Split Accent Bar */
+.letterhead-accent-strip {
+  display: flex;
+  height: 6px;
+  width: 100%;
+
+  .strip-cyan {
+    width: 25%;
+    background-color: var(--brand-cyan);
+  }
+
+  .strip-navy {
+    width: 75%;
+    background-color: var(--brand-primary);
+  }
+}
+
+/* Underline Link */
+.link-underlined {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  border-bottom: 2px solid var(--brand-coral);
+  padding-bottom: 2px;
+  display: inline-block;
+}
+
+.link-underlined:hover {
+  color: var(--brand-coral);
+}
+
+/* Form elements */
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.form-label .required {
+  color: var(--brand-coral);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-xs);
+  color: var(--text-dark);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--text-dark);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-error {
+  font-size: 0.8rem;
+  color: var(--brand-coral);
+}
+
+/* Geometric photo accent */
+.photo-with-accent {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.photo-with-accent img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-with-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 70%;
+  height: 70%;
+  background-color: var(--brand-coral);
+  z-index: 1;
+}
+
+.photo-with-accent.accent-top-right::after {
+  top: -15px;
+  right: -15px;
+  bottom: auto;
+}
+
+@media (max-width: 768px) {
+  .photo-with-accent::after {
+    display: none;
+  }
+}

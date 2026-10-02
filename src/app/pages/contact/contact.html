@@ -1,0 +1,170 @@
+<main class="contact-ref-page">
+
+  <!-- Hero Header -->
+  <section class="ref-hero-sub">
+    <div class="container">
+      <div class="ref-breadcrumb">
+        <a routerLink="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a routerLink="/services">Employers</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Looking to Hire</span>
+      </div>
+      <h1 class="page-main-heading">Looking to Hire?</h1>
+      <p class="page-main-sub">
+        Partner with TruePath HR Solutions to find exceptional HR professionals and executive leadership. Tell us about your staffing requirements, and a specialist recruitment consultant will get in touch.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form & Info Grid -->
+  <section class="form-body-section">
+    <div class="container">
+      <div class="contact-dual-layout">
+        
+        <!-- Left: Form -->
+        <div class="form-card-white">
+          <h2 class="form-title">Request a Callback / Submit a Vacancy</h2>
+          <p class="form-intro-text">Fill in the form below and a TruePath recruitment specialist will contact you promptly.</p>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmitConsultation()">
+            
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Your full name <span class="required">*</span></label>
+                <input type="text" formControlName="fullName" class="form-input" placeholder="e.g. Sarah Al-Mansoori">
+                @if (contactForm.get('fullName')?.touched && contactForm.get('fullName')?.errors) {
+                  <span class="form-error">Full name is required.</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Company name <span class="required">*</span></label>
+                <input type="text" formControlName="companyName" class="form-input" placeholder="e.g. Emirates Global Enterprises">
+                @if (contactForm.get('companyName')?.touched && contactForm.get('companyName')?.errors) {
+                  <span class="form-error">Company name is required.</span>
+                }
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Work email address <span class="required">*</span></label>
+                <input type="email" formControlName="workEmail" class="form-input" placeholder="e.g. sarah@company.ae">
+                @if (contactForm.get('workEmail')?.touched && contactForm.get('workEmail')?.errors) {
+                  <span class="form-error">Please provide a valid work email.</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Phone number <span class="required">*</span></label>
+                <input type="tel" formControlName="phone" class="form-input" placeholder="e.g. +971 50 123 4567">
+                @if (contactForm.get('phone')?.touched && contactForm.get('phone')?.errors) {
+                  <span class="form-error">Phone number is required.</span>
+                }
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Role to hire for <span class="required">*</span></label>
+                <select formControlName="rolesCount" class="form-select">
+                  <option value="HR Manager">HR Manager</option>
+                  <option value="HR Business Partner">HR Business Partner (HRBP)</option>
+                  <option value="Talent Acquisition Specialist">Talent Acquisition Specialist</option>
+                  <option value="Head of HR / Director">Head of HR / VP / Director</option>
+                  <option value="Payroll & Comp Specialist">Payroll & Benefits Specialist</option>
+                  <option value="Multiple HR Roles">Multiple Roles (Team Scaling)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Hiring timeframe <span class="required">*</span></label>
+                <select formControlName="timeframe" class="form-select">
+                  <option value="Immediate">Immediate / Urgent</option>
+                  <option value="Within 30 Days">Within 30 Days</option>
+                  <option value="Next Quarter">Next Quarter</option>
+                  <option value="General Inquiry">General Consultation</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Tell us more about the role / requirements <span class="required">*</span></label>
+              <textarea formControlName="message" class="form-textarea" placeholder="Provide details on key qualifications, contract type (permanent / interim), location, or specific experience needed..."></textarea>
+              @if (contactForm.get('message')?.touched && contactForm.get('message')?.errors) {
+                <span class="form-error">Please describe your requirements.</span>
+              }
+            </div>
+
+            <button type="submit" class="btn btn-coral btn-lg w-full">
+              Submit Hiring Request
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: Office Hubs & Assistance -->
+        <div class="contact-side-col">
+          
+          <div class="side-info-card">
+            <h3>Speak directly to an HR consultant</h3>
+            <p>Our recruitment specialists are ready to discuss your hiring needs, Emiratisation targets, and compensation benchmarks.</p>
+            
+            <div class="contact-quick-list">
+              <div class="quick-item highlight-dubai">
+                <div class="hq-badge">GLOBAL HQ</div>
+                <strong>Dubai Headquarters</strong>
+                <p>Meydan Garndstand, 6th floor, Meydan Road, Dubai</p>
+                <span class="phone-link">+971 52 673 5518</span>
+                <span class="email-link">truepathventures.ae&#64;gmail.com</span>
+              </div>
+
+              <div class="quick-item">
+                <strong>Abu Dhabi Office</strong>
+                <p>ADGM Square, Al Maryah Island</p>
+                <span class="phone-link">+971 2 645 8890</span>
+              </div>
+
+              <div class="quick-item">
+                <strong>Riyadh Office</strong>
+                <p>King Fahd Road, Al Olaya District</p>
+                <span class="phone-link">+966 11 482 1200</span>
+              </div>
+
+              <div class="quick-item">
+                <strong>London Office</strong>
+                <p>100 Bishopsgate, 22nd Floor</p>
+                <span class="phone-link">+44 20 7946 0991</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="side-candidate-banner">
+            <h4>Are you a job seeker?</h4>
+            <p>Register your CV with TruePath to be considered for our latest HR and executive opportunities.</p>
+            <a routerLink="/submit-cv" class="btn btn-dark btn-sm">Register your CV</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Confirmation Modal -->
+  @if (submittedConsultation(); as cons) {
+    <div class="modal-overlay" (click)="closeModal()">
+      <div class="ref-modal-card" (click)="$event.stopPropagation()">
+        <div class="modal-badge-icon">✓</div>
+        <h2>Request Received</h2>
+        <p class="modal-sub">
+          Thank you, <strong>{{ cons.fullName }}</strong>. An HR recruitment specialist from TruePath HR Solutions will contact you shortly regarding your vacancy for <strong>{{ cons.companyName }}</strong>.
+        </p>
+        <button type="button" class="btn btn-coral w-full" (click)="closeModal()">
+          Close
+        </button>
+      </div>
+    </div>
+  }
+
+</main>

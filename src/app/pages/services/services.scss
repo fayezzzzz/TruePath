@@ -1,0 +1,261 @@
+.services-page {
+  padding-top: 5rem;
+}
+
+.page-hero {
+  padding: 5rem 0 3.5rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-content {
+  max-width: 860px;
+  margin: 0 auto;
+
+  .page-title {
+    margin: 1rem 0 1.25rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+}
+
+.practices-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.practice-card {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.practice-header {
+  .practice-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+
+    .practice-timeline {
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+  }
+
+  .practice-title {
+    font-size: 1.85rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .practice-tagline {
+    font-size: 1.05rem;
+    color: var(--brand-cyan-light);
+    font-weight: 500;
+  }
+}
+
+.practice-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2.5rem;
+}
+
+.practice-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .practice-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .ideal-for-box {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--brand-cyan);
+    padding: 0.75rem 1rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+
+    strong {
+      color: var(--text-primary);
+    }
+  }
+}
+
+.practice-capabilities {
+  h4 {
+    font-size: 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .cap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+
+    svg {
+      color: var(--brand-emerald);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+  }
+}
+
+.practice-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  .stat-highlight {
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+    background: rgba(10, 14, 26, 0.6);
+
+    .stat-big {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+  }
+
+  .w-full { width: 100%; }
+}
+
+/* Sectors Grid */
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+.sector-card {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .sector-title {
+    font-size: 1.35rem;
+    color: var(--text-primary);
+  }
+
+  .sector-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .top-roles-list {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .roles-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--brand-cyan-light);
+    }
+
+    .role-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+
+      svg {
+        color: #fbbf24;
+      }
+    }
+  }
+}
+
+/* Comparison Table */
+.table-responsive {
+  overflow-x: auto;
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+
+  th, td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  th {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  tbody tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .sub-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .practice-body {
+    grid-template-columns: 1fr;
+  }
+
+  .sectors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .practice-capabilities .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-card {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,249 @@
+.site-header {
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Top White Utility Bar */
+.top-util-bar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0.45rem 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dark-secondary);
+}
+
+.top-util-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-util-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.82rem;
+
+  .util-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--text-dark-secondary);
+
+    &.phone {
+      font-weight: 700;
+      color: var(--brand-primary);
+
+      &:hover {
+        color: var(--brand-blue);
+      }
+    }
+  }
+
+  .util-divider {
+    color: #cbd5e1;
+  }
+}
+
+.top-util-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+
+  .util-link {
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+
+    &:hover {
+      color: var(--brand-blue);
+    }
+  }
+
+  .util-divider {
+    color: #cbd5e1;
+    font-weight: normal;
+  }
+
+  .lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    font-weight: 700;
+
+    &:hover {
+      color: var(--brand-blue);
+    }
+  }
+}
+
+/* Main Dark Header Bar */
+.main-dark-bar {
+  background: linear-gradient(135deg, #0b2540 0%, #081d33 100%);
+  color: #ffffff;
+  padding: 1rem 0;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.main-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* TruePath Letterhead Logo */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+
+  .logo-symbol-wrap {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+
+    .truepath-emblem-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 50%;
+    }
+  }
+
+  &:hover .logo-symbol-wrap {
+    transform: scale(1.06);
+  }
+
+  .logo-text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo-main-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    line-height: 1.1;
+
+    .name-bold {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .name-legal {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #cbd5e1;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  .logo-subtitle {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #38bdf8;
+    letter-spacing: 0.28em;
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+}
+
+/* Desktop Nav Items */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.85rem;
+
+  .nav-item {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--brand-coral);
+    }
+  }
+
+  .account-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0.5rem;
+
+    .account-icon-circle {
+      color: var(--brand-coral);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-nav-panel {
+  display: none;
+  background: #181818;
+  padding: 1.5rem;
+  border-top: 1px solid #333;
+
+  &.open {
+    display: block;
+  }
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  a {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #282828;
+
+    &:hover {
+      color: var(--brand-coral);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+}

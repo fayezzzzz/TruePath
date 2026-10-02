@@ -1,0 +1,244 @@
+.case-studies-page {
+  padding-top: 5rem;
+}
+
+.page-hero {
+  padding: 5rem 0 3.5rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-content {
+  max-width: 860px;
+  margin: 0 auto;
+
+  .page-title {
+    margin: 1rem 0 1.25rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+}
+
+.case-studies-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.detailed-cs-card {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.cs-header-strip {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 2rem;
+}
+
+.cs-title-group {
+  .badges-row {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .client-name {
+    font-size: 2.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .cs-location-time {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+
+    .divider {
+      color: var(--border-strong);
+    }
+
+    strong {
+      color: var(--brand-cyan-light);
+    }
+  }
+}
+
+.cs-outcomes-pills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.outcome-pill {
+  padding: 1.25rem 0.85rem;
+  text-align: center;
+  background: rgba(10, 14, 26, 0.7);
+
+  .out-val {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .out-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+  }
+
+  .out-detail {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+}
+
+.cs-body-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+}
+
+.cs-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.narrative-block {
+  .narrative-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+
+    svg {
+      color: var(--brand-cyan-light);
+    }
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+}
+
+.cs-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.roles-placed-card {
+  padding: 1.5rem;
+  background: rgba(10, 14, 26, 0.5);
+
+  h4 {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .roles-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+
+      svg {
+        color: var(--brand-emerald);
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+.testimonial-bubble {
+  background: rgba(99, 102, 241, 0.08);
+  border-left: 3px solid var(--brand-primary);
+  padding: 1.25rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+
+  .bubble-text {
+    font-size: 0.88rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+  }
+
+  .bubble-author {
+    .name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .role {
+      font-size: 0.75rem;
+      color: var(--brand-cyan-light);
+    }
+  }
+}
+
+.cs-bottom-banner {
+  margin-top: 3.5rem;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  .banner-text {
+    h3 { margin-bottom: 0.4rem; }
+    p { font-size: 0.95rem; }
+  }
+}
+
+@media (max-width: 1024px) {
+  .cs-header-strip,
+  .cs-body-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .cs-bottom-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .detailed-cs-card {
+    padding: 1.5rem;
+  }
+
+  .cs-outcomes-pills {
+    grid-template-columns: 1fr;
+  }
+}
