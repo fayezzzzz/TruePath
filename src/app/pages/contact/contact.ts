@@ -35,33 +35,6 @@ export class ContactComponent implements OnInit, OnDestroy {
       email: 'truepathventures.ae@gmail.com',
       currentTime: ''
     },
-    {
-      city: 'Abu Dhabi',
-      country: 'United Arab Emirates',
-      address: 'ADGM Square, Al Maryah Island',
-      timezone: 'Asia/Dubai',
-      phone: '+971 2 645 8890',
-      email: 'uae@truepathventures.ae',
-      currentTime: ''
-    },
-    {
-      city: 'Riyadh',
-      country: 'Saudi Arabia',
-      address: 'King Fahd Road, Al Olaya District',
-      timezone: 'Asia/Riyadh',
-      phone: '+966 11 482 1200',
-      email: 'ksa@truepathventures.ae',
-      currentTime: ''
-    },
-    {
-      city: 'London',
-      country: 'United Kingdom',
-      address: '100 Bishopsgate, 22nd Floor',
-      timezone: 'Europe/London',
-      phone: '+44 20 7946 0991',
-      email: 'uk@truepathventures.ae',
-      currentTime: ''
-    }
   ]);
 
   // FAQs for Employers

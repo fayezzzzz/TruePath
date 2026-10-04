@@ -73,7 +73,7 @@ export class AboutComponent {
     title: 'Founder & Managing Director',
     company: 'TruePath Ventures L.L.C',
     location: 'Dubai, United Arab Emirates',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80',
+    avatar: 'assets/md-profile.png',
     quote: 'TruePath was founded with a clear vision: to elevate executive recruitment from a transactional process into a strategic, high-trust partnership for GCC enterprises.',
     bio: [
       'With extensive experience in executive search, corporate human resources, and business strategy across the UAE and GCC, Fayez leads TruePath Ventures with a focus on delivering excellence, precision, and compliance.',
