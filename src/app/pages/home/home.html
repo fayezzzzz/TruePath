@@ -1,23 +1,30 @@
 <main class="home-page-ref">
 
   <!-- =========================================================================
-       HERO SECTION (DARK BACKGROUND)
+       HERO SECTION (DARK BACKGROUND WITH ZOOM ANIMATION)
        ========================================================================= -->
   <section class="ref-hero">
+    <!-- Animated Zoom Background Layer -->
+    <div 
+      class="hero-bg-layer" 
+      [class.loaded]="isLoaded()" 
+      [style.transform]="heroZoomTransform">
+    </div>
+    
     <div class="container">
       
-    
       <!-- Hero Titles -->
-      <div class="ref-hero-content">
+      <div class="ref-hero-content animate-fade-up">
         <h1 class="ref-hero-title">Transforming HR, Empowering Businesses</h1>
         <p class="ref-hero-desc">
           TruePath is a Dubai-based talent acquisition and executive search consultancy partnering with leading enterprises, corporations, and high-growth businesses to identify and secure exceptional leadership and specialized talent.
 
-         <br><br> With expertise spanning across industries and sectors, we deliver highly targeted talent solutions for critical appointments—combining market insight, sector expertise, and a rigorous search approach to connect organizations with the people who shape their next stage of growth.        </p>
+          <br><br> With expertise spanning across industries and sectors, we deliver highly targeted talent solutions for critical appointments—combining market insight, sector expertise, and a rigorous search approach to connect organizations with the people who shape their next stage of growth.
+        </p>
       </div>
 
       <!-- Hero Button -->
-      <div class="ref-hero-btn-wrap">
+      <div class="ref-hero-btn-wrap animate-fade-up delay-1">
         <a routerLink="/contact" class="btn btn-coral btn-lg">
           Contact Our Team
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>

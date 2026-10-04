@@ -271,3 +271,43 @@ a {
     display: none;
   }
 }
+
+/* ==========================================================================
+   PAGE ROUTE VIEW TRANSITIONS (SMOOTH PURE FADE)
+   ========================================================================== */
+::view-transition-group(root) {
+  animation-duration: 0.28s;
+  animation-timing-function: ease-in-out;
+}
+
+::view-transition-old(root) {
+  animation: 0.2s ease-out both pureFadeOut;
+}
+
+::view-transition-new(root) {
+  animation: 0.28s ease-in-out both pureFadeIn;
+}
+
+@keyframes pureFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes pureFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fallback pure smooth fade-in for all page containers */
+main {
+  animation: pureFadeIn 0.3s ease-in-out both;
+  will-change: opacity;
+}
