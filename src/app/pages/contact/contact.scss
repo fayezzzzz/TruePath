@@ -18,11 +18,20 @@
 
     a {
       color: #ffffff;
-      &:hover { color: var(--brand-coral); }
+
+      &:hover {
+        color: var(--brand-coral);
+      }
     }
 
-    .bc-sep { color: #666; }
-    .bc-current { color: #ffffff; font-weight: 600; }
+    .bc-sep {
+      color: #666;
+    }
+
+    .bc-current {
+      color: #ffffff;
+      font-weight: 600;
+    }
   }
 
   .page-main-heading {
@@ -219,8 +228,14 @@
     justify-content: center;
   }
 
-  h2 { font-size: 1.6rem; }
-  .modal-sub { font-size: 0.95rem; color: var(--text-dark-secondary); }
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .modal-sub {
+    font-size: 0.95rem;
+    color: var(--text-dark-secondary);
+  }
 }
 
 @media (max-width: 1024px) {
