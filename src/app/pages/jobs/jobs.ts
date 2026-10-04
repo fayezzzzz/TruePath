@@ -15,7 +15,7 @@ export class JobsComponent {
   readonly talentService = inject(TalentService);
   private readonly router = inject(Router);
 
-  // Selected job for slide-over / details modal
+  // Selected discipline role for modal
   readonly selectedJob = signal<JobPosition | null>(null);
 
   // Filter bindings
@@ -58,8 +58,13 @@ export class JobsComponent {
     this.selectedJob.set(null);
   }
 
-  applyForJob(job: JobPosition) {
+  hireForRole(job: JobPosition) {
     this.closeJobDetails();
-    this.router.navigate(['/submit-cv'], { queryParams: { role: job.title, jobId: job.id } });
+    this.router.navigate(['/contact'], { queryParams: { role: job.title, discipline: job.department } });
+  }
+
+  // Alias for backwards compatibility
+  applyForJob(job: JobPosition) {
+    this.hireForRole(job);
   }
 }

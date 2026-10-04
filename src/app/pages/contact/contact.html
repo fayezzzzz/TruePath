@@ -10,9 +10,9 @@
         <span class="bc-sep">/</span>
         <span class="bc-current">Looking to Hire</span>
       </div>
-      <h1 class="page-main-heading">Looking to Hire?</h1>
+      <h1 class="page-main-heading">Looking to Hire Corporate Talent?</h1>
       <p class="page-main-sub">
-        Partner with TruePath HR Solutions to find exceptional HR professionals and executive leadership. Tell us about your staffing requirements, and a specialist recruitment consultant will get in touch.
+        Partner with TruePath HR Solutions to secure exceptional HR professionals, leadership teams, and executive management. Tell us about your organization's staffing requirements, and a specialist practice partner will contact you promptly.
       </p>
     </div>
   </section>
@@ -24,8 +24,8 @@
         
         <!-- Left: Form -->
         <div class="form-card-white">
-          <h2 class="form-title">Request a Callback / Submit a Vacancy</h2>
-          <p class="form-intro-text">Fill in the form below and a TruePath recruitment specialist will contact you promptly.</p>
+          <h2 class="form-title">Request Executive Consultation / Submit Vacancy</h2>
+          <p class="form-intro-text">Fill in your organization details below and a TruePath recruitment partner will reach out within 4 business hours.</p>
 
           <form [formGroup]="contactForm" (ngSubmit)="onSubmitConsultation()">
             
@@ -39,7 +39,7 @@
               </div>
 
               <div class="form-group">
-                <label class="form-label">Company name <span class="required">*</span></label>
+                <label class="form-label">Company / Organization name <span class="required">*</span></label>
                 <input type="text" formControlName="companyName" class="form-input" placeholder="e.g. Emirates Global Enterprises">
                 @if (contactForm.get('companyName')?.touched && contactForm.get('companyName')?.errors) {
                   <span class="form-error">Company name is required.</span>
@@ -57,7 +57,7 @@
               </div>
 
               <div class="form-group">
-                <label class="form-label">Phone number <span class="required">*</span></label>
+                <label class="form-label">Phone / WhatsApp number <span class="required">*</span></label>
                 <input type="tel" formControlName="phone" class="form-input" placeholder="e.g. +971 50 123 4567">
                 @if (contactForm.get('phone')?.touched && contactForm.get('phone')?.errors) {
                   <span class="form-error">Phone number is required.</span>
@@ -81,17 +81,17 @@
               <div class="form-group">
                 <label class="form-label">Hiring timeframe <span class="required">*</span></label>
                 <select formControlName="timeframe" class="form-select">
-                  <option value="Immediate">Immediate / Urgent</option>
+                  <option value="Immediate">Immediate / Urgent (&lt; 14 Days)</option>
                   <option value="Within 30 Days">Within 30 Days</option>
                   <option value="Next Quarter">Next Quarter</option>
-                  <option value="General Inquiry">General Consultation</option>
+                  <option value="General Inquiry">General Strategy Consultation</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label">Tell us more about the role / requirements <span class="required">*</span></label>
-              <textarea formControlName="message" class="form-textarea" placeholder="Provide details on key qualifications, contract type (permanent / interim), location, or specific experience needed..."></textarea>
+              <label class="form-label">Tell us more about your hiring requirements <span class="required">*</span></label>
+              <textarea formControlName="message" class="form-textarea" placeholder="Provide details on key qualifications, contract type (retained executive search / contingency), location, or specific experience needed..."></textarea>
               @if (contactForm.get('message')?.touched && contactForm.get('message')?.errors) {
                 <span class="form-error">Please describe your requirements.</span>
               }
@@ -107,8 +107,8 @@
         <div class="contact-side-col">
           
           <div class="side-info-card">
-            <h3>Speak directly to an HR consultant</h3>
-            <p>Our recruitment specialists are ready to discuss your hiring needs, Emiratisation targets, and compensation benchmarks.</p>
+            <h3>Speak directly to an HR search partner</h3>
+            <p>Our recruitment specialists are ready to discuss your hiring roadmap, Emiratisation targets, and GCC compensation benchmarks.</p>
             
             <div class="contact-quick-list">
               <div class="quick-item highlight-dubai">
@@ -139,10 +139,10 @@
             </div>
           </div>
 
-          <div class="side-candidate-banner">
-            <h4>Are you a job seeker?</h4>
-            <p>Register your CV with TruePath to be considered for our latest HR and executive opportunities.</p>
-            <a routerLink="/submit-cv" class="btn btn-dark btn-sm">Register your CV</a>
+          <div class="side-candidate-banner" style="background: linear-gradient(135deg, #0b2540 0%, #081d33 100%); border-left: 4px solid #38bdf8;">
+            <h4>Dedicated B2B Enterprise Mandates</h4>
+            <p>Need a fast, calibrated candidate shortlist? Browse the specialized sectors we serve or complete the inquiry form.</p>
+            <a routerLink="/industries" class="btn btn-coral btn-sm">Explore Industries We Serve</a>
           </div>
 
         </div>
@@ -158,7 +158,7 @@
         <div class="modal-badge-icon">✓</div>
         <h2>Request Received</h2>
         <p class="modal-sub">
-          Thank you, <strong>{{ cons.fullName }}</strong>. An HR recruitment specialist from TruePath HR Solutions will contact you shortly regarding your vacancy for <strong>{{ cons.companyName }}</strong>.
+          Thank you, <strong>{{ cons.fullName }}</strong>. An HR search partner from TruePath HR Solutions will contact you shortly regarding your vacancy for <strong>{{ cons.companyName }}</strong>.
         </p>
         <button type="button" class="btn btn-coral w-full" (click)="closeModal()">
           Close

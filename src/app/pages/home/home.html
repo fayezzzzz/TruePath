@@ -6,56 +6,22 @@
   <section class="ref-hero">
     <div class="container">
       
-      <!-- Breadcrumb -->
-      <div class="ref-breadcrumb">
-        <a routerLink="/">Home</a>
-        <span class="bc-sep">/</span>
-        <a routerLink="/jobs">Jobs</a>
-        <span class="bc-sep">/</span>
-        <span class="bc-current">Human Resources</span>
-      </div>
-
+    
       <!-- Hero Titles -->
       <div class="ref-hero-content">
-        <h1 class="ref-hero-title">HR Solutions & Executive Recruitment</h1>
+        <h1 class="ref-hero-title">Transforming HR, Empowering Businesses</h1>
         <p class="ref-hero-desc">
-          TruePath is a premier HR recruitment and executive search consultancy headquartered in Dubai. We match businesses with exceptional HR professionals and leadership talent who transform workplaces, empower teams, and drive lasting success.
-        </p>
+          TruePath is a Dubai-based talent acquisition and executive search consultancy partnering with leading enterprises, corporations, and high-growth businesses to identify and secure exceptional leadership and specialized talent.
+
+         <br><br> With expertise spanning across industries and sectors, we deliver highly targeted talent solutions for critical appointments—combining market insight, sector expertise, and a rigorous search approach to connect organizations with the people who shape their next stage of growth.        </p>
       </div>
 
-      <!-- Hero Search Bar Strip -->
-      <div class="ref-search-strip">
-        <form class="ref-search-form" (ngSubmit)="executeSearch()">
-          <span class="search-prompt">Looking for a job?</span>
-          
-          <div class="input-container title-input-box">
-            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input 
-              type="text" 
-              [(ngModel)]="searchTitle" 
-              name="searchTitle"
-              placeholder="Search by job title or role" 
-              class="ref-input">
-          </div>
-
-          <div class="input-container location-select-box">
-            <select [(ngModel)]="searchLocation" name="searchLocation" class="ref-select">
-              <option value="">All Locations</option>
-              <option value="Dubai">Dubai, UAE</option>
-              <option value="Abu Dhabi">Abu Dhabi, UAE</option>
-              <option value="Riyadh">Riyadh, KSA</option>
-              <option value="London">London, UK</option>
-              <option value="Singapore">Singapore</option>
-              <option value="Remote">Remote</option>
-            </select>
-          </div>
-
-          <button type="submit" class="btn btn-coral search-btn">
-            Search
-          </button>
-
-          <a routerLink="/contact" class="hire-link">Looking to hire?</a>
-        </form>
+      <!-- Hero Button -->
+      <div class="ref-hero-btn-wrap">
+        <a routerLink="/contact" class="btn btn-coral btn-lg">
+          Contact Our Team
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
 
     </div>
@@ -81,15 +47,15 @@
         <!-- Right Column: Copy -->
         <div class="showcase-text-col">
           <h2 class="showcase-heading">
-            We see the person who brings out the best in others through exceptional HR staffing and recruitment expertise
+            Simplifying HR Compliance & Executive Recruitment for Organizations
           </h2>
           
           <p class="showcase-para">
-            Despite the rise of digitalization and process automation, HR professionals remain essential to any organization. HR roles demand not only technical expertise but also a deep sense of humanity and empathy, qualities that cannot be replaced by technology. Our recruitment specialists recognize the value of finding candidates who resonate with your corporate DNA, ensuring the right cultural and skill fit for these pivotal positions.
+            TruePath operates as an exclusive B2B talent acquisition partner for corporations. We do not operate open public job boards or accept unsolicited candidate resume drops. Instead, our senior practice partners actively map and discreetly headhunt the top 5% of passive executive and HR talent across Dubai, the GCC, and international markets.
           </p>
 
           <p class="showcase-para">
-            Our dedicated HR headhunters are well-versed in the latest recruitment standards and have built an extensive network of high-caliber candidates for middle to upper management roles. We excel in filling a variety of HR positions tailored to meet the unique needs of esteemed organizations, including HR Manager, Payroll Specialist, HR Business Partner, and Talent Acquisition Manager. By connecting companies with exceptional HR talent, we help build teams that foster a positive and productive work environment.
+            Our experienced team ensures that your corporate HR and executive hiring processes remain compliant, accurate, and up to date across Hospitality, IT & Telecom, Banking & Finance, Logistics, Healthcare, Retail, and Construction. With us as your extended HR partner, you get faster execution, pre-calibrated shortlists, and peace of mind at every step.
           </p>
         </div>
 
@@ -98,19 +64,19 @@
   </section>
 
   <!-- =========================================================================
-       SECTION 3: REGISTER YOUR CV CALLOUT BANNER
+       SECTION 3: SUBMIT CORPORATE REQUIREMENT BANNER
        ========================================================================= -->
   <section class="ref-cv-banner-section">
     <div class="container">
       <div class="ref-cv-card">
         
         <div class="cv-card-left">
-          <h2 class="cv-card-title">Register your CV</h2>
+          <h2 class="cv-card-title">Have a Hiring Requirement?</h2>
           <p class="cv-card-desc">
-            Register your CV with us so we can get to know the real you.
+            Submit your corporate vacancy or executive mandate with our Dubai practice to receive a pre-calibrated candidate shortlist within 5-10 business days.
           </p>
-          <a routerLink="/submit-cv" class="btn btn-coral cv-card-btn">
-            Register your CV
+          <a routerLink="/contact" class="btn btn-coral cv-card-btn">
+            Submit Hiring Requirement
           </a>
         </div>
 
@@ -118,7 +84,7 @@
           <div class="photo-with-accent accent-top-right">
             <img 
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80" 
-              alt="Candidate registering CV on mobile" 
+              alt="Corporate executive reviewing talent requirements" 
               class="cv-img">
           </div>
         </div>
@@ -127,146 +93,6 @@
     </div>
   </section>
 
-  <!-- =========================================================================
-       SECTION 4: LATEST JOBS CAROUSEL / GRID
-       ========================================================================= -->
-  <section class="ref-jobs-section">
-    <div class="container">
-      <h2 class="section-center-heading">Latest Jobs</h2>
-
-      <div class="jobs-grid-row">
-        @for (job of talentService.featuredJobs(); track job.id) {
-          <div class="job-card-ref">
-            <div class="job-card-header">
-              <span class="job-tag">{{ job.department }}</span>
-              <span class="job-location">{{ job.location }}</span>
-            </div>
-            <h3 class="job-card-title">{{ job.title }}</h3>
-            <div class="job-salary-line">{{ job.salaryRange }}</div>
-            <p class="job-card-desc">{{ job.overview }}</p>
-            <div class="job-card-actions">
-              <a [routerLink]="['/submit-cv']" [queryParams]="{ role: job.title }" class="btn btn-coral btn-sm">
-                Apply Now
-              </a>
-              <a routerLink="/jobs" class="link-underlined">View details</a>
-            </div>
-          </div>
-        }
-      </div>
-
-      <div class="view-all-jobs-row">
-        <a routerLink="/jobs" class="btn btn-outline">Browse All Open Positions</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       SECTION 5: RECRUITMENT INSIGHTS & CAREER ADVICE
-       ========================================================================= -->
-  <section class="ref-insights-section">
-    <div class="container">
-      <div class="insights-dual-layout">
-        
-        <!-- Column 1: Recruitment Insights (2 Big Cards) -->
-        <div class="insights-col">
-          <div class="col-header-row">
-            <h2 class="col-heading">Recruitment Insights</h2>
-            <a routerLink="/case-studies" class="link-underlined">View All</a>
-          </div>
-
-          <div class="insight-cards-grid">
-            <!-- Card 1 -->
-            <article class="insight-card">
-              <div class="insight-img-wrap">
-                <img 
-                  src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&auto=format&fit=crop&q=80" 
-                  alt="2026 Talent Trends Webinar" 
-                  class="insight-img">
-              </div>
-              <div class="insight-content">
-                <h3 class="insight-title">2026 Talent Trends Webinar</h3>
-                <p class="insight-excerpt">
-                  The future of work is evolving rapidly — are you ready to lead through the changes? Access our on-demand Talent Trends 2026 webinar and gain actionable insights into three critical trends that will shape how organisations attract, engage, and retain talent in the years ahead.
-                </p>
-                <a routerLink="/case-studies" class="link-underlined">Read More</a>
-              </div>
-              <div class="insight-footer">
-                <span class="category-tag">Webinar</span>
-              </div>
-            </article>
-
-            <!-- Card 2 -->
-            <article class="insight-card">
-              <div class="insight-img-wrap">
-                <img 
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&auto=format&fit=crop&q=80" 
-                  alt="Hiring in the Age of Expectations" 
-                  class="insight-img">
-              </div>
-              <div class="insight-content">
-                <h3 class="insight-title">Hiring in the Age of Expectations</h3>
-                <p class="insight-excerpt">
-                  Why successful hiring journeys now feel like a customer experience. Think about the best customer experiences you've had. They're rarely complex and elaborate, rather they make an impact on us because they were personal and easy. The best experiences we have as consumers are when journeys feel user-f...
-                </p>
-                <a routerLink="/case-studies" class="link-underlined">Read More</a>
-              </div>
-              <div class="insight-footer">
-                <span class="category-tag">E-guides</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Column 2: Career Advice (List of 4 Horizontal Items) -->
-        <div class="advice-col">
-          <div class="col-header-row">
-            <h2 class="col-heading">Career advice</h2>
-            <a routerLink="/case-studies" class="link-underlined">View All</a>
-          </div>
-
-          <div class="advice-list">
-            
-            <a routerLink="/case-studies" class="advice-item">
-              <div class="advice-thumb-wrap">
-                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=160&auto=format&fit=crop&q=80" alt="Career advice 1" class="advice-thumb">
-              </div>
-              <div class="advice-title">
-                Building a high-growth talent acquisition function
-              </div>
-            </a>
-
-            <a routerLink="/case-studies" class="advice-item">
-              <div class="advice-thumb-wrap">
-                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=160&auto=format&fit=crop&q=80" alt="Career advice 2" class="advice-thumb">
-              </div>
-              <div class="advice-title">
-                How to establish a successful mentoring program in your company
-              </div>
-            </a>
-
-            <a routerLink="/case-studies" class="advice-item">
-              <div class="advice-thumb-wrap">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=160&auto=format&fit=crop&q=80" alt="Career advice 3" class="advice-thumb">
-              </div>
-              <div class="advice-title">
-                Why every company should implement a mentoring program
-              </div>
-            </a>
-
-            <a routerLink="/case-studies" class="advice-item">
-              <div class="advice-thumb-wrap">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=160&auto=format&fit=crop&q=80" alt="Career advice 4" class="advice-thumb">
-              </div>
-              <div class="advice-title">
-                HR recruiting and labour market trends in 2026
-              </div>
-            </a>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  
 
 </main>

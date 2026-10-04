@@ -11,7 +11,7 @@
       <div class="top-util-contact">
         <span class="util-contact-item">
           <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Dubai, UAE
+          Dubai, UAE (Meydan HQ)
         </span>
         <span class="util-divider">|</span>
         <a href="tel:+971526735518" class="util-contact-item phone">
@@ -21,8 +21,6 @@
       </div>
 
       <div class="top-util-links">
-        <a routerLink="/submit-cv" class="util-link">REGISTER YOUR CV</a>
-        <span class="util-divider">|</span>
         <a routerLink="/contact" class="util-link">LOOKING TO HIRE</a>
         <span class="util-divider">|</span>
         <div class="lang-selector">
@@ -44,62 +42,48 @@
         <div class="logo-text-block">
           <div class="logo-main-title">
             <span class="name-bold">TruePath</span>
-            <span class="name-legal">ventures L.L.C-FZ</span>
+            <span class="name-legal">ventures L.L.C</span>
           </div>
-          <div class="logo-subtitle">H R &nbsp; S O L U T I O N S</div>
+          <div class="logo-subtitle">HR &nbsp; SOLUTIONS</div>
         </div>
       </a>
 
       <!-- Desktop Nav -->
       <nav class="desktop-nav">
-        <a routerLink="/jobs" class="nav-item">
-          Jobs
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </a>
-        <a routerLink="/submit-cv" class="nav-item">
-          Candidates
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <a routerLink="/industries" class="nav-item">
+          Sectors
         </a>
         <a routerLink="/services" class="nav-item">
           Services
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
-        <a routerLink="/case-studies" class="nav-item">
-          Insights
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <a routerLink="/portfolio" class="nav-item">
+          Portfolio
+        </a>
+        <a routerLink="/blogs" class="nav-item">
+          Blogs
         </a>
         <a routerLink="/about" class="nav-item">
           About Us
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
         <a routerLink="/contact" class="nav-item">
-          Contact Us
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          Connect
         </a>
-        <a routerLink="/submit-cv" class="nav-item account-nav-item">
-          <div class="account-icon-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <span>My Account</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <a routerLink="/contact" class="btn btn-coral btn-sm" style="margin-left: 0.5rem;">
+          Hire Talent
         </a>
       </nav>
-
-      <!-- Mobile Hamburger -->
-      <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle navigation menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-      </button>
+      
     </div>
 
     <!-- Mobile Dropdown -->
     <div class="mobile-nav-panel" [class.open]="isMobileMenuOpen()">
       <div class="mobile-nav-list">
-        <a routerLink="/jobs" (click)="closeMobileMenu()">Jobs</a>
-        <a routerLink="/submit-cv" (click)="closeMobileMenu()">Candidates / Register CV</a>
-        <a routerLink="/services" (click)="closeMobileMenu()">Services</a>
-        <a routerLink="/case-studies" (click)="closeMobileMenu()">Insights & Advice</a>
-        <a routerLink="/about" (click)="closeMobileMenu()">About Us</a>
-        <a routerLink="/contact" (click)="closeMobileMenu()">Contact Us / Hire</a>
+        <a routerLink="/industries" (click)="closeMobileMenu()">Sectors</a>
+        <a routerLink="/services" (click)="closeMobileMenu()">HR Solutions & Services</a>
+        <a routerLink="/portfolio" (click)="closeMobileMenu()">Client Portfolio</a>
+        <a routerLink="/blogs" (click)="closeMobileMenu()">Blogs & Articles</a>
+        <a routerLink="/about" (click)="closeMobileMenu()">About TruePath</a>
+        <a routerLink="/contact" (click)="closeMobileMenu()">Connect / Hire</a>
       </div>
     </div>
   </div>

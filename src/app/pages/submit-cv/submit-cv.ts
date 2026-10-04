@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } 
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { TalentService } from '../../services/talent.service';
 import { ToastService } from '../../services/toast.service';
-import { CandidateApplication } from '../../models/talent.models';
+import { HiringRequirement } from '../../models/talent.models';
 
 @Component({
   selector: 'app-submit-cv',
@@ -19,9 +19,9 @@ export class SubmitCvComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
 
   // Form Group
-  applicationForm!: FormGroup;
+  requirementForm!: FormGroup;
 
-  // File Upload State
+  // File Upload State for Job Description / Requirement Specification
   selectedFile = signal<File | null>(null);
   fileName = signal<string>('');
   fileSize = signal<string>('');
@@ -29,18 +29,18 @@ export class SubmitCvComponent implements OnInit {
   isUploading = signal<boolean>(false);
   uploadProgress = signal<number>(0);
 
-  // Skill Tags State
+  // Suggested Key Skills / Competencies
   availableSkills = [
-    'TypeScript', 'Go', 'Rust', 'Python', 'React', 'Angular', 'Node.js',
-    'Kubernetes', 'AWS', 'GCP', 'PostgreSQL', 'Distributed Systems',
-    'LLM / Generative AI', 'MLOps', 'Product Strategy', 'Engineering Management',
-    'System Architecture', 'C-Suite Leadership', 'Fintech', 'HealthTech'
+    'Executive Leadership', 'HRBP & Talent Strategy', 'Emiratisation Compliance',
+    'Total Rewards & Compensation', 'Talent Acquisition Scaling', 'UAE Labour Law',
+    'C-Suite Search', 'Engineering Management', 'Distributed Systems', 'Cloud & DevOps',
+    'Financial Governance', 'HRIS / Workday / SAP', 'Performance Frameworks'
   ];
-  selectedSkills = signal<string[]>(['TypeScript', 'Kubernetes']);
+  selectedSkills = signal<string[]>(['Executive Leadership', 'HRBP & Talent Strategy']);
   newSkillInput = '';
 
   // Submission Status / Success Modal
-  submissionSuccess = signal<CandidateApplication | null>(null);
+  submissionSuccess = signal<HiringRequirement | null>(null);
 
   ngOnInit() {
     this.initForm();
@@ -48,36 +48,47 @@ export class SubmitCvComponent implements OnInit {
     // Check if routed with a specific role
     this.route.queryParams.subscribe(params => {
       if (params['role']) {
-        this.applicationForm.patchValue({
-          desiredRole: params['role']
+        this.requirementForm.patchValue({
+          roleTitle: params['role']
+        });
+      }
+      if (params['discipline']) {
+        this.requirementForm.patchValue({
+          discipline: params['discipline']
         });
       }
     });
   }
 
   private initForm() {
-    this.applicationForm = this.fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
+    this.requirementForm = this.fb.group({
+      // Step 1: Company Details
+      companyName: ['', [Validators.required, Validators.minLength(2)]],
+      contactName: ['', [Validators.required, Validators.minLength(3)]],
+      workEmail: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.minLength(8)]],
-      location: ['', [Validators.required]],
-      currentRole: ['', [Validators.required]],
-      desiredRole: ['', [Validators.required]],
-      industry: ['Engineering & Cloud', [Validators.required]],
-      experienceYears: [6, [Validators.required, Validators.min(0)]],
-      seniorityLevel: ['Senior', [Validators.required]],
-      workTypePreference: ['Remote', [Validators.required]],
-      noticePeriod: ['1 Month', [Validators.required]],
-      currentSalary: [''],
-      expectedSalary: ['', [Validators.required]],
-      linkedInUrl: [''],
-      portfolioUrl: [''],
-      coverNote: [''],
-      consentData: [true, [Validators.requiredTrue]]
+      companyLocation: ['Dubai, UAE', [Validators.required]],
+      industry: ['Technology & Software', [Validators.required]],
+      companySize: ['50-250 employees', [Validators.required]],
+
+      // Step 2: Role & Hiring Specifications
+      roleTitle: ['', [Validators.required, Validators.minLength(3)]],
+      discipline: ['People & HR', [Validators.required]],
+      headcount: ['1 Position', [Validators.required]],
+      seniorityLevel: ['Senior / Lead', [Validators.required]],
+      workModel: ['Hybrid', [Validators.required]],
+      employmentType: ['Permanent Retained Search', [Validators.required]],
+      salaryBudget: ['AED 35,000 - 55,000 / month', [Validators.required]],
+      timeframe: ['Within 30 Days', [Validators.required]],
+
+      // Step 3: Job Spec & Additional Criteria
+      roleOverview: [''],
+      isConfidential: [false],
+      consentTerms: [true, [Validators.requiredTrue]]
     });
   }
 
-  // File handling
+  // File handling for Job Spec document
   onFileDropped(event: DragEvent) {
     event.preventDefault();
     this.isDragging.set(false);
@@ -104,16 +115,16 @@ export class SubmitCvComponent implements OnInit {
   }
 
   private handleFile(file: File) {
-    const allowedExtensions = ['pdf', 'doc', 'docx'];
+    const allowedExtensions = ['pdf', 'doc', 'docx', 'txt'];
     const fileExt = file.name.split('.').pop()?.toLowerCase();
 
     if (!fileExt || !allowedExtensions.includes(fileExt)) {
-      this.toastService.error('Invalid File Type', 'Please upload your CV in PDF, DOC, or DOCX format.');
+      this.toastService.error('Invalid File Type', 'Please upload your Job Description / Mandate Brief in PDF, DOC, or DOCX format.');
       return;
     }
 
-    if (file.size > 10 * 1024 * 1024) {
-      this.toastService.error('File Too Large', 'Maximum file size allowed is 10MB.');
+    if (file.size > 15 * 1024 * 1024) {
+      this.toastService.error('File Too Large', 'Maximum file size allowed is 15MB.');
       return;
     }
 
@@ -121,16 +132,15 @@ export class SubmitCvComponent implements OnInit {
     this.fileName.set(file.name);
     this.fileSize.set((file.size / (1024 * 1024)).toFixed(2) + ' MB');
 
-    // Simulate fast upload & AI parsing
     this.isUploading.set(true);
-    this.uploadProgress.set(20);
+    this.uploadProgress.set(25);
 
     const timer = setInterval(() => {
       this.uploadProgress.update(p => {
         if (p >= 100) {
           clearInterval(timer);
           this.isUploading.set(false);
-          this.toastService.info('CV Attached & Verified', 'Resume successfully indexed for precision matching.');
+          this.toastService.info('Job Spec Attached', 'Job description document indexed for practice search calibration.');
           return 100;
         }
         return p + 25;
@@ -145,7 +155,7 @@ export class SubmitCvComponent implements OnInit {
     this.uploadProgress.set(0);
   }
 
-  // Skills tag handling
+  // Skills tags
   addSkill(skill: string) {
     const trimmed = skill.trim();
     if (trimmed && !this.selectedSkills().includes(trimmed)) {
@@ -166,56 +176,63 @@ export class SubmitCvComponent implements OnInit {
     }
   }
 
-  // Form submission
-  onSubmitApplication() {
-    if (this.applicationForm.invalid) {
-      this.applicationForm.markAllAsTouched();
-      this.toastService.warning('Incomplete Application', 'Please fill in all mandatory fields before submitting.');
+  // Submission handler
+  onSubmitRequirement() {
+    if (this.requirementForm.invalid) {
+      this.requirementForm.markAllAsTouched();
+      this.toastService.warning('Incomplete Requirement', 'Please fill in all required company and mandate fields.');
       return;
     }
 
-    if (!this.selectedFile()) {
-      this.toastService.warning('CV Required', 'Please upload your CV / Resume document (.pdf or .docx).');
-      return;
-    }
+    const formVal = this.requirementForm.value;
 
-    const formVal = this.applicationForm.value;
-
-    const applicationResult = this.talentService.submitCandidateApplication({
-      fullName: formVal.fullName,
-      email: formVal.email,
+    const result = this.talentService.submitHiringRequirement({
+      companyName: formVal.companyName,
+      contactName: formVal.contactName,
+      workEmail: formVal.workEmail,
       phone: formVal.phone,
-      location: formVal.location,
-      currentRole: formVal.currentRole,
-      desiredRole: formVal.desiredRole,
+      companyLocation: formVal.companyLocation,
       industry: formVal.industry,
-      experienceYears: Number(formVal.experienceYears),
+      companySize: formVal.companySize,
+      roleTitle: formVal.roleTitle,
+      discipline: formVal.discipline,
+      headcount: formVal.headcount,
       seniorityLevel: formVal.seniorityLevel,
-      workTypePreference: formVal.workTypePreference,
-      noticePeriod: formVal.noticePeriod,
-      currentSalary: formVal.currentSalary || 'Confidential',
-      expectedSalary: formVal.expectedSalary,
-      linkedInUrl: formVal.linkedInUrl,
-      portfolioUrl: formVal.portfolioUrl,
-      skills: this.selectedSkills(),
-      cvFileName: this.fileName(),
-      cvFileSize: this.fileSize(),
-      coverNote: formVal.coverNote
+      workModel: formVal.workModel,
+      employmentType: formVal.employmentType,
+      salaryBudget: formVal.salaryBudget,
+      timeframe: formVal.timeframe,
+      jdFileName: this.fileName() || undefined,
+      jdFileSize: this.fileSize() || undefined,
+      keySkills: this.selectedSkills(),
+      roleOverview: formVal.roleOverview,
+      isConfidential: !!formVal.isConfidential
     });
 
-    this.submissionSuccess.set(applicationResult);
-    this.toastService.success('Application Received!', `Your reference code is ${applicationResult.referenceCode}`);
+    this.submissionSuccess.set(result);
+    this.toastService.success('Hiring Requirement Logged!', `Mandate reference code: ${result.referenceCode}`);
+  }
+
+  // For backward compatibility template bindings if any
+  onSubmitApplication() {
+    this.onSubmitRequirement();
   }
 
   closeSuccessModal() {
     this.submissionSuccess.set(null);
-    this.applicationForm.reset({
-      industry: 'Engineering & Cloud',
-      experienceYears: 6,
-      seniorityLevel: 'Senior',
-      workTypePreference: 'Remote',
-      noticePeriod: '1 Month',
-      consentData: true
+    this.requirementForm.reset({
+      companyLocation: 'Dubai, UAE',
+      industry: 'Technology & Software',
+      companySize: '50-250 employees',
+      discipline: 'People & HR',
+      headcount: '1 Position',
+      seniorityLevel: 'Senior / Lead',
+      workModel: 'Hybrid',
+      employmentType: 'Permanent Retained Search',
+      salaryBudget: 'AED 35,000 - 55,000 / month',
+      timeframe: 'Within 30 Days',
+      isConfidential: false,
+      consentTerms: true
     });
     this.removeFile();
   }

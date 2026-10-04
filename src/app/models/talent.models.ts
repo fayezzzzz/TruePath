@@ -53,6 +53,22 @@ export interface CaseStudy {
   };
 }
 
+export interface BlogPost {
+  id: string;
+  title: string;
+  category: string;
+  author: string;
+  authorRole: string;
+  authorAvatar: string;
+  publishedDate: string;
+  readTime: string;
+  coverImage: string;
+  excerpt: string;
+  content: string[];
+  tags: string[];
+  isFeatured?: boolean;
+}
+
 export interface Testimonial {
   id: string;
   quote: string;
@@ -60,35 +76,39 @@ export interface Testimonial {
   role: string;
   company: string;
   avatar: string;
-  type: 'Client' | 'Placed Candidate';
+  type: 'Client' | 'Enterprise Partner';
   rating: number;
 }
 
-export interface CandidateApplication {
+export interface HiringRequirement {
   id: string;
   referenceCode: string;
-  fullName: string;
-  email: string;
+  companyName: string;
+  contactName: string;
+  workEmail: string;
   phone: string;
-  currentRole: string;
-  desiredRole: string;
+  companyLocation: string;
   industry: string;
-  experienceYears: number;
+  companySize: string;
+  roleTitle: string;
+  discipline: string;
+  headcount: string;
   seniorityLevel: string;
-  currentSalary: string;
-  expectedSalary: string;
-  workTypePreference: string;
-  noticePeriod: string;
-  location: string;
-  linkedInUrl?: string;
-  portfolioUrl?: string;
-  skills: string[];
-  cvFileName: string;
-  cvFileSize: string;
-  coverNote?: string;
+  workModel: string;
+  employmentType: string;
+  salaryBudget: string;
+  timeframe: string;
+  jdFileName?: string;
+  jdFileSize?: string;
+  keySkills: string[];
+  roleOverview?: string;
+  isConfidential: boolean;
   submittedAt: string;
-  status: 'Received' | 'Under Review' | 'Matched with Opportunity';
+  status: 'Received' | 'Under Review' | 'Partner Assigned';
 }
+
+// Backward compatibility alias
+export type CandidateApplication = HiringRequirement;
 
 export interface ConsultationRequest {
   id: string;
@@ -96,7 +116,7 @@ export interface ConsultationRequest {
   companyName: string;
   workEmail: string;
   phone: string;
-  inquiryType: 'Hire Talent' | 'Executive Search' | 'Candidate Application' | 'RPO / Strategic Partnership';
+  inquiryType: 'Hire Talent' | 'Executive Search' | 'Enterprise Consultation' | 'RPO / Strategic Partnership';
   rolesCount: string;
   timeframe: string;
   budgetRange: string;

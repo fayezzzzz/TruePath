@@ -1,142 +1,202 @@
 <main class="about-page">
-  <section class="page-hero bg-grid">
-    <div class="radial-glow"></div>
-    <div class="container hero-content text-center">
-      <span class="badge badge-brand">Our Ethos & Origin</span>
-      <h1 class="page-title">Pioneering Strategic <span class="text-gradient-brand">HR & Executive Solutions</span></h1>
-      <p class="page-subtitle">
-        Headquartered at Meydan Garndstand in Dubai, TruePath ventures L.L.C-FZ bridges the gap between ambitious enterprises and transformational executive and HR talent.
+
+  <!-- Hero Header -->
+  <section class="ref-hero-sub">
+    <div class="container">
+      <div class="ref-breadcrumb">
+        <a routerLink="/">Home</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">About Us</span>
+      </div>
+
+      <div class="hero-badge-pill">
+        <span class="badge-dot"></span>
+        TruePath Ventures L.L.C
+      </div>
+
+      <h1 class="page-main-heading">About Our Firm & Leadership</h1>
+      <p class="page-main-sub">
+        Headquartered at Meydan Grandstand in Dubai, TruePath is an exclusive B2B talent acquisition, executive search, and HR consultancy partnering with organizations across the UAE and the wider GCC.
       </p>
     </div>
   </section>
 
-  <!-- Mission & Vision Section -->
-  <section class="section">
+  <!-- Company Overview Section -->
+  <section class="about-story-section">
     <div class="container">
-      <div class="story-grid card-glass">
-        <div class="story-content">
-          <span class="badge badge-cyan">Why We Built TruePath</span>
-          <h2>Redefining HR Solutions for Modern Global Enterprises</h2>
-          <p>
-            Traditional staffing agencies rely on generic keyword-stuffed resume matching, aggressive contingency spam, and zero strategic comprehension.
-          </p>
-          <p>
-            We founded TruePath HR Solutions with a singular conviction: **hiring excellence requires deep organizational immersion**. Our partners and consultants understand how human capital velocity, executive alignment, and cultural resilience drive market-leading performance across Dubai, the GCC, and international corridors.
-          </p>
-          <div class="story-stats-row">
-            <div class="story-stat">
-              <div class="val text-gradient-brand">1,200+</div>
-              <div class="lbl">Executives & HR Placements</div>
-            </div>
-            <div class="story-stat">
-              <div class="val text-gradient-brand">98.4%</div>
-              <div class="lbl">2-Year Retention Rate</div>
-            </div>
-            <div class="story-stat">
-              <div class="val text-gradient-brand">14 Days</div>
-              <div class="lbl">Avg. Shortlist Delivery</div>
+      <div class="story-card">
+        <div class="story-grid">
+          
+          <div class="story-text-col">
+            <span class="section-tag">Our Corporate Mission</span>
+            <h2 class="story-heading">Strategic Talent Acquisition Built on Trust, Precision, and Discretion</h2>
+            <p class="story-para">
+              TruePath operates exclusively on a B2B model. We do not run public resume dropboxes or push uncalibrated CVs. Instead, our practice partners actively map and engage the top tier of executive and specialized talent across 12 core industry sectors in Dubai and international corridors.
+            </p>
+            <p class="story-para">
+              From retained C-suite headhunting and permanent placements to turnkey mass staffing, UAE government relations (PRO/GRO), and managed HR operations, we ensure your organization scales with velocity and total regulatory peace of mind.
+            </p>
+
+            <div class="story-kpi-row">
+              <div class="kpi-mini-box">
+                <span class="kpi-v">100%</span>
+                <span class="kpi-l">MOHRE & Labour Law Compliant</span>
+              </div>
+              <div class="kpi-mini-box">
+                <span class="kpi-v">98.4%</span>
+                <span class="kpi-l">Executive Retention Rate</span>
+              </div>
+              <div class="kpi-mini-box">
+                <span class="kpi-v">12+</span>
+                <span class="kpi-l">Specialized Industry Sectors</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="story-highlights-box">
-          <h3>The TruePath Standard</h3>
-          <ul class="standard-list">
-            <li>
-              <strong>01. Direct Partner Lead:</strong> Every mandate is personally managed by a Senior Practice Partner, never handed off to junior coordinators.
-            </li>
-            <li>
-              <strong>02. Executive Market Mapping:</strong> Proprietary talent databases tracking high-impact passive HR directors and C-suite leaders.
-            </li>
-            <li>
-              <strong>03. 12-Month Executive SLA:</strong> Industry-leading replacement guarantee safeguarding your strategic talent investment.
-            </li>
-          </ul>
+          <div class="story-media-col">
+            <div class="photo-with-accent">
+              <img 
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&auto=format&fit=crop&q=80" 
+                alt="Dubai Meydan Corporate Financial Centre" 
+                class="story-img">
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Core Values -->
-  <section class="section bg-grid">
+  <!-- Managing Director's Profile & Message -->
+  <section class="md-profile-section">
     <div class="container">
-      <div class="section-header text-center">
-        <span class="badge badge-emerald">Guiding Principles</span>
-        <h2>Our Core Values & Commitments</h2>
-        <p class="section-desc">The principles that govern our client partnerships and candidate stewardship.</p>
+      
+      <div class="section-title-center">
+        <span class="section-tag">Executive Leadership</span>
+        <h2 class="section-main-title">Managing Director's Profile</h2>
+        <p class="section-main-desc">A message from our leadership on our vision for human capital excellence in the UAE and GCC.</p>
       </div>
 
-      <div class="values-grid">
-        @for (v of coreValues(); track v.title) {
-          <div class="value-card card-glass">
-            <div class="value-title-row">
-              <h3>{{ v.title }}</h3>
+      @if (managingDirector(); as md) {
+        <div class="md-card">
+          <div class="md-grid">
+            
+            <!-- Left: Avatar and Identity -->
+            <div class="md-avatar-col">
+              <div class="md-photo-wrap">
+                <img [src]="md.avatar" [alt]="md.name" class="md-photo">
+                <div class="md-badge-overlay">
+                  <span class="md-status-dot"></span>
+                  Managing Director
+                </div>
+              </div>
+
+              <div class="md-quick-info">
+                <h3 class="md-name">{{ md.name }}</h3>
+                <div class="md-role-title">{{ md.title }}</div>
+                <div class="md-company-title">{{ md.company }}</div>
+                <div class="md-location-line">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  {{ md.location }}
+                </div>
+              </div>
             </div>
-            <p class="value-desc">{{ v.desc }}</p>
+
+            <!-- Right: Bio, Quote and Pillars -->
+            <div class="md-bio-col">
+              
+              <!-- Quote Banner -->
+              <div class="md-quote-banner">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="quote-svg"><path d="M3 21c3 0 7-1 7-8V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v6c0 4.4 3.6 8 8 8zm14 0c3 0 7-1 7-8V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v6c0 4.4 3.6 8 8 8z"/></svg>
+                <p class="md-quote-text">“{{ md.quote }}”</p>
+              </div>
+
+              <!-- Biography Paragraphs -->
+              <div class="md-bio-paragraphs">
+                @for (para of md.bio; track para) {
+                  <p class="md-bio-p">{{ para }}</p>
+                }
+              </div>
+            </div>
+
+          </div>
+        </div>
+      }
+
+    </div>
+  </section>
+
+  <!-- Company Ethics & Responsibilities -->
+  <section class="ethics-section">
+    <div class="container">
+      
+      <div class="section-title-center">
+        <span class="section-tag">Governance & Principles</span>
+        <h2 class="section-main-title">Our Ethics & Responsibilities</h2>
+        <p class="section-main-desc">The guiding code of conduct and professional commitments that govern every client partnership and search mandate.</p>
+      </div>
+
+      <div class="ethics-grid">
+        @for (item of ethics(); track item.title) {
+          <div class="ethic-card">
+            <div class="ethic-top-row">
+              <span class="ethic-category-tag" [class.resp]="item.category === 'Corporate Responsibility'">
+                {{ item.category }}
+              </span>
+              
+              <div class="ethic-icon-bubble">
+                @switch (item.icon) {
+                  @case ('shield') {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  }
+                  @case ('check-circle') {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  }
+                  @case ('award') {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                  }
+                  @case ('users') {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  }
+                  @case ('scale') {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+                  }
+                  @case ('flag') {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                  }
+                  @case ('heart') {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                  }
+                  @case ('leaf') {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                  }
+                }
+              </div>
+            </div>
+
+            <h3 class="ethic-title">{{ item.title }}</h3>
+            <p class="ethic-desc">{{ item.description }}</p>
           </div>
         }
       </div>
+
     </div>
   </section>
 
-  <!-- Leadership Team -->
-  <section class="section">
+  <!-- Bottom Advisory Banner -->
+  <section class="about-cta-banner">
     <div class="container">
-      <div class="section-header text-center">
-        <span class="badge badge-brand">Partner Leadership</span>
-        <h2>Meet Our Managing Partners</h2>
-        <p class="section-desc">Seasoned talent partners with decades of combined experience across global tech hubs.</p>
-      </div>
-
-      <div class="leadership-grid">
-        @for (member of leadershipTeam(); track member.name) {
-          <div class="leader-card card-glass">
-            <div class="avatar-wrap">
-              <img [src]="member.avatar" [alt]="member.name" class="leader-avatar">
-            </div>
-            <div class="leader-info">
-              <h3 class="leader-name">{{ member.name }}</h3>
-              <div class="leader-role">{{ member.role }}</div>
-              <div class="leader-practice">{{ member.practice }}</div>
-              <p class="leader-bio">{{ member.bio }}</p>
-            </div>
-          </div>
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- Global Presence Strip -->
-  <section class="section bg-grid">
-    <div class="container">
-      <div class="global-map-card card-glass text-center">
-        <span class="badge badge-cyan">Global Footprint</span>
-        <h2>Operating in Premier Technology Capital Corridors</h2>
-        <p>With established practice hubs in North America, Europe, the Middle East, and Asia Pacific.</p>
-        
-        <div class="hubs-grid">
-          <div class="hub-item">
-            <div class="hub-city">San Francisco</div>
-            <div class="hub-focus">AI, Cloud & Venture Scale</div>
-          </div>
-          <div class="hub-item">
-            <div class="hub-city">New York</div>
-            <div class="hub-focus">Fintech, Data & Enterprise SaaS</div>
-          </div>
-          <div class="hub-item">
-            <div class="hub-city">London</div>
-            <div class="hub-focus">European Tech & ClimateTech</div>
-          </div>
-          <div class="hub-item">
-            <div class="hub-city">Singapore</div>
-            <div class="hub-focus">APAC Expansion & Logistics</div>
-          </div>
-          <div class="hub-item">
-            <div class="hub-city">Dubai</div>
-            <div class="hub-focus">MENA & Sovereign Tech Funds</div>
-          </div>
+      <div class="cta-inner-card">
+        <div class="cta-text">
+          <h2>Partner with TruePath for Your Next Executive Mandate</h2>
+          <p>Connect directly with our Dubai leadership team for a confidential consultation on your workforce strategy, leadership succession, or specialized hiring needs.</p>
+        </div>
+        <div class="cta-btns">
+          <a routerLink="/contact" class="btn btn-coral btn-lg">Schedule Consultation</a>
+          <a routerLink="/services" class="btn btn-outline btn-lg text-white">Explore All Services</a>
         </div>
       </div>
     </div>
   </section>
+
 </main>

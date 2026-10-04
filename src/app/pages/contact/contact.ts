@@ -1,18 +1,20 @@
 import { Component, inject, signal, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RouterModule, ActivatedRoute } from '@angular/router';
 import { TalentService } from '../../services/talent.service';
 import { ToastService } from '../../services/toast.service';
 import { ConsultationRequest } from '../../models/talent.models';
 
 @Component({
   selector: 'app-contact',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './contact.html',
   styleUrl: './contact.scss'
 })
 export class ContactComponent implements OnInit, OnDestroy {
   private readonly fb = inject(FormBuilder);
+  private readonly route = inject(ActivatedRoute);
   readonly talentService = inject(TalentService);
   readonly toastService = inject(ToastService);
 
@@ -62,14 +64,14 @@ export class ContactComponent implements OnInit, OnDestroy {
     }
   ]);
 
-  // FAQs
+  // FAQs for Employers
   readonly faqs = [
     {
       question: 'How quickly can TruePath present a calibrated shortlist of HR and executive candidates?',
       answer: 'For specialized HR and mid-to-senior management searches, we deliver our first shortlist of 3-5 pre-interviewed and backchannel-vetted candidates within 5-10 business days. For confidential C-Suite and executive leadership mandates, our complete regional market map and shortlist are delivered within 14-21 business days.'
     },
     {
-      question: 'What is TruePath\'s placement warranty and replacement guarantee?',
+      question: 'What is TruePath\'s placement warranty and replacement guarantee for corporate clients?',
       answer: 'All executive placements and leadership searches are backed by our comprehensive 12-month placement guarantee. Our specialized contingency and interim placements include a complete 90-day warranty. In the rare event a hire departs or does not meet agreed performance benchmarks, we replace the role at zero additional fee.'
     },
     {
@@ -77,8 +79,8 @@ export class ContactComponent implements OnInit, OnDestroy {
       answer: 'Headquartered in Dubai at Meydan Garndstand, TruePath ventures L.L.C-FZ is fully licensed and versed in UAE Labor Law, Emiratisation policies (MOHRE), executive visa structuring, free zone compliance (DIFC, ADGM, Meydan FZ), and regional GCC talent mobility.'
     },
     {
-      question: 'Are candidate CV submissions and employer hiring mandates kept confidential?',
-      answer: 'Yes, 100%. We adhere to strict executive non-disclosure protocols. We never share your resume, identity, or current company details with prospective employers without your explicit prior discussion and consent for that specific role.'
+      question: 'Are employer hiring mandates and company information kept strictly confidential?',
+      answer: 'Yes, 100%. We operate under non-disclosure agreements (NDAs) for sensitive executive replacements and unannounced leadership transitions. No company information is disclosed until candidates have signed mutual NDAs and have passed preliminary vetting.'
     },
     {
       question: 'Do you assist with international talent relocation to Dubai & the Middle East?',
@@ -92,6 +94,14 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.initForm();
     this.updateOfficeTimes();
     this.clockInterval = setInterval(() => this.updateOfficeTimes(), 1000);
+
+    this.route.queryParams.subscribe(params => {
+      if (params['role']) {
+        this.contactForm.patchValue({
+          message: `Inquiry regarding: ${params['role']}`
+        });
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -107,7 +117,7 @@ export class ContactComponent implements OnInit, OnDestroy {
       workEmail: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],
       inquiryType: ['Hire Talent', [Validators.required]],
-      rolesCount: ['3-5 Roles', [Validators.required]],
+      rolesCount: ['HR Manager', [Validators.required]],
       timeframe: ['Within 30 Days', [Validators.required]],
       budgetRange: ['$150k - $300k', [Validators.required]],
       preferredContact: ['Virtual Meeting', [Validators.required]],
@@ -158,14 +168,14 @@ export class ContactComponent implements OnInit, OnDestroy {
     });
 
     this.submittedConsultation.set(req);
-    this.toastService.success('Consultation Request Received!', 'A Managing Partner will reach out within 4 business hours.');
+    this.toastService.success('Consultation Request Received!', 'A Practice Partner will reach out within 4 business hours.');
   }
 
   closeModal() {
     this.submittedConsultation.set(null);
     this.contactForm.reset({
       inquiryType: 'Hire Talent',
-      rolesCount: '3-5 Roles',
+      rolesCount: 'HR Manager',
       timeframe: 'Within 30 Days',
       budgetRange: '$150k - $300k',
       preferredContact: 'Virtual Meeting'

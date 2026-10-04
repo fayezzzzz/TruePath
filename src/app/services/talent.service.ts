@@ -1,113 +1,147 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { JobPosition, RecruitmentService, CaseStudy, Testimonial, CandidateApplication, ConsultationRequest } from '../models/talent.models';
+import { JobPosition, RecruitmentService, CaseStudy, Testimonial, HiringRequirement, ConsultationRequest } from '../models/talent.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TalentService {
 
-  // Recruitment Services
+  // Recruitment & Corporate HR Services
   readonly services = signal<RecruitmentService[]>([
     {
+      id: 'staffing-solutions',
+      title: 'Staffing & Temporary Workforce',
+      tagline: 'Agile, flexible staffing solutions for project surges, seasonal peaks, and interim support',
+      description: 'Deploy qualified contract professionals across administration, tech, operations, and customer support with complete legal sponsorship and payroll management handled by TruePath.',
+      icon: 'users',
+      badge: 'STAFFING',
+      timeline: '24 - 48 Hours to Deployment',
+      idealFor: 'Sudden workload surges, seasonal spikes, maternity covers, and pilot projects',
+      stats: { metric: '48 Hours', label: 'Average Onboarding Speed' },
+      keyFeatures: [
+        'Pre-screened, immediately available talent pool across Dubai and UAE',
+        'Flexible short-term, medium-term, and temp-to-perm staffing contracts',
+        'Full WPS payroll, timesheet management, and statutory benefits handling',
+        'Rapid replacement guarantee for uninterrupted operational continuity'
+      ]
+    },
+    {
+      id: 'permanent-recruitment',
+      title: 'Permanent Recruitment',
+      tagline: 'Precision direct-hire contingency search across specialist, mid-level, and senior roles',
+      description: 'We identify, vet, and deliver high-impact professionals who align seamlessly with your corporate culture, technical requirements, and long-term organizational vision.',
+      icon: 'user-check',
+      badge: 'PERMANENT RECRUITMENT',
+      timeline: '5 - 10 Days to Shortlist',
+      idealFor: 'Core functional roles, team expansion, department heads, and technical specialists',
+      stats: { metric: '96.2%', label: 'Offer Acceptance Rate' },
+      keyFeatures: [
+        'Comprehensive multi-channel headhunting across active and passive candidate markets',
+        'Rigorous 3-stage competency, behavioural, and domain-specific assessment',
+        'Thorough background checks, credential verification, and reference audits',
+        'Standard 90-day free candidate replacement warranty on every placement'
+      ]
+    },
+    {
+      id: 'pro-gro-services',
+      title: 'PRO & GRO Government Liaison',
+      tagline: 'End-to-end UAE government relations, visa processing, licensing, and regulatory compliance',
+      description: 'Navigate UAE government entities with total confidence. Our dedicated PRO and GRO specialists handle corporate visas, labour approvals, trade license renewals, and official attestations without delay.',
+      icon: 'file-text',
+      badge: 'PRO & GRO',
+      timeline: 'Express Processing',
+      idealFor: 'Multinationals, newly established UAE entities, and enterprises needing compliant visa operations',
+      stats: { metric: '100%', label: 'Regulatory Compliance Track Record' },
+      keyFeatures: [
+        'Fast-track employment residence visas, Golden Visas, and mission visas',
+        'MOHRE quotas, Tasheel document processing, Amer and GDRFA clearances',
+        'Corporate trade license issuance, amendments, branch registration, and renewals',
+        'Embassy document legalizations, MOFA attestations, and corporate translations'
+      ]
+    },
+    {
       id: 'executive-search',
-      title: 'Executive Search & C-Suite Advisory',
-      tagline: 'Precision headhunting for transformational board and C-level leaders',
-      description: 'We partner with enterprise boards and venture-backed founders to secure world-class CEOs, CTOs, CFOs, CROs, and VP-level executives who drive exponential growth.',
+      title: 'Executive Search & Headhunting',
+      tagline: 'Confidential retained search for transformational C-Suite, Board, and Managing Director appointments',
+      description: 'Partnering with enterprise boards, family offices, and multinational firms to headhunt world-class CEOs, CFOs, CHROs, CTOs, and Regional Managing Directors across the GCC.',
       icon: 'crown',
-      badge: 'Retained Advisory',
-      timeline: '18 - 30 Days to Offer',
-      idealFor: 'Series B+ Startups, Public Enterprises, Private Equity portfolio firms',
-      stats: { metric: '98.4%', label: 'Executive 2-Year Retention' },
+      badge: 'EXECUTIVE SEARCH',
+      timeline: '15 - 30 Days to Finalist Panel',
+      idealFor: 'C-Suite appointments, Board of Directors, Country Managers, and confidential leadership transitions',
+      stats: { metric: '98.5%', label: 'Executive 2-Year Retention' },
       keyFeatures: [
-        'Confidential & passive global market mapping',
-        '360-degree leadership competency & behavioral assessment',
-        'Equity & executive compensation benchmarking',
-        '12-Month replacement guarantee & executive onboarding coach'
-      ]
-    },
-    {
-      id: 'tech-engineering',
-      title: 'Tech, AI & Engineering Scaling',
-      tagline: 'High-caliber software engineers, AI architects, and engineering managers',
-      description: 'From Staff Distributed Systems Engineers and LLM specialists to Heads of Engineering, we deliver pre-vetted technical talent with verified coding & architecture rigor.',
-      icon: 'code-cpu',
-      badge: 'High Velocity',
-      timeline: '7 - 14 Days to Shortlist',
-      idealFor: 'High-growth SaaS, Fintech, AI Labs, and Cloud Infrastructure scale-ups',
-      stats: { metric: '3.2 : 1', label: 'Interview to Offer Ratio' },
-      keyFeatures: [
-        'Technical vetting by senior staff engineers on our advisory council',
-        'Specialized pipelines in Python, Go, Rust, React, AI/MLOps & Cloud',
-        'Global remote and hub-based talent relocation management',
-        'Hackathon & algorithmic capability screening'
-      ]
-    },
-    {
-      id: 'product-design',
-      title: 'Product, Growth & Design Leadership',
-      tagline: 'Visionaries who build market-defining user experiences and growth engines',
-      description: 'We place VP of Product, Lead Product Managers, Chief Design Officers, and Growth Strategists who transform complex problems into high-adoption products.',
-      icon: 'sparkles',
-      badge: 'Strategic Impact',
-      timeline: '12 - 21 Days to Shortlist',
-      idealFor: 'Product-led growth organizations and digital transformation initiatives',
-      stats: { metric: '450+', label: 'Product Leaders Placed' },
-      keyFeatures: [
-        'Portfolio & product strategy case-study reviews',
-        'Customer-centric metrics & experimentation vetting',
-        'B2B Enterprise vs B2C Consumer specialization',
-        'Cross-functional engineering & design leadership evaluation'
-      ]
-    },
-    {
-      id: 'rpo-embedded',
-      title: 'Embedded Talent Partner & RPO',
-      tagline: 'Seamlessly embed senior talent acquisition teams directly into your company',
-      description: 'Scale hiring rapidly without agency markups. Our dedicated talent partners integrate into your Slack, ATS, and team culture to scale departments efficiently.',
-      icon: 'layers',
-      badge: 'Enterprise Scalability',
-      timeline: 'Flexible Engagements',
-      idealFor: 'Companies scaling 20 to 100+ hires per quarter',
-      stats: { metric: '42%', label: 'Average Cost-Per-Hire Reduction' },
-      keyFeatures: [
-        'Full-cycle recruiter + talent sourcer dedicated pods',
-        'Employer branding & candidate experience enhancement',
-        'ATS optimization (Greenhouse, Lever, Ashby, Workday)',
-        'Comprehensive diversity & inclusion (DE&I) sourcing pipelines'
-      ]
-    },
-    {
-      id: 'interim-contract',
-      title: 'Interim Leadership & Specialized Contractors',
-      tagline: 'Immediate deployment of elite fractional and contract specialists',
-      description: 'Bridge critical leadership or technical gaps within 48 hours. Access seasoned fractional CTOs, interim CFOs, and sprint-ready architects on demand.',
-      icon: 'zap',
-      badge: '48h Deployment',
-      timeline: '48 - 72 Hours to Placement',
-      idealFor: 'Turnaround projects, funding transitions, M&A integrations, critical sprints',
-      stats: { metric: '99.1%', label: 'Project Milestone Success' },
-      keyFeatures: [
-        'Pre-cleared, background-verified elite contractors',
-        'Turnkey payroll, IP protection & international compliance',
-        'Fractional (1-3 days/week) or full-time interim contracts',
-        'Option to convert to permanent roles seamlessly'
+        'Discreet, confidential market mapping of passive Tier-1 regional and global executives',
+        'Structured 360-degree leadership competency and cultural calibration framework',
+        'Executive compensation, equity, and LTIP benchmarking tailored to the GCC market',
+        '12-Month replacement guarantee with dedicated executive onboarding support'
       ]
     },
     {
       id: 'hr-advisory',
-      title: 'Compensation Benchmarking & HR Advisory',
-      tagline: 'Data-backed market intelligence on salary, equity bands, and talent retention',
-      description: 'Make competitive offers with real-time compensation data across global tech hubs. We provide salary band design, retention audits, and talent market analytics.',
-      icon: 'chart-bar',
-      badge: 'Market Intelligence',
-      timeline: 'Custom Project Sprints',
-      idealFor: 'Leadership teams planning expansions or restructuring compensation',
-      stats: { metric: '100% Data-Driven', label: 'Real-Time Global Bands' },
+      title: 'HR Advisory & Transformation',
+      tagline: 'Strategic consulting to modernize organization design, compensation frameworks, and HR governance',
+      description: 'Empower your leadership with actionable human capital strategies. We design competitive compensation bands, performance appraisal architectures, and compliant HR policy handbooks.',
+      icon: 'trending-up',
+      badge: 'HR ADVISORY & TRANSFORMATION',
+      timeline: 'Custom Advisory Sprints',
+      idealFor: 'Enterprises scaling rapidly, corporate restructurings, M&A integrations, and compliance overhauls',
+      stats: { metric: '100% Compliant', label: 'UAE Labour Law Alignment' },
       keyFeatures: [
-        'Tier-1 market salary & equity benchmarking by geography',
-        'Candidate negotiation playbook and offer closing strategies',
-        'Attrition risk analysis and retention roadmaps',
-        'Global remote hiring compliance & entity advisory'
+        'Organization design, job evaluation grading (Mercer/Korn Ferry), and leveling frameworks',
+        'GCC compensation & benefits benchmarking, salary grids, and incentive plan design',
+        'UAE Labour Law compliance audits, employee handbooks, and standard operating procedures',
+        'Performance management system (PMS) design with OKR and KPI calibration'
+      ]
+    },
+    {
+      id: 'mass-recruitment',
+      title: 'Mass Recruitment & Project Hiring',
+      tagline: 'Turnkey high-volume hiring campaigns for major expansions, store rollouts, and infrastructure projects',
+      description: 'Mobilize dozens or hundreds of qualified staff simultaneously. From initial overseas sourcing and assessment days to batch visa processing and deployment, we manage the entire recruitment supply chain.',
+      icon: 'briefcase',
+      badge: 'MASS RECRUITMENT',
+      timeline: 'Rapid High-Volume Deployments',
+      idealFor: 'Hospitality grand openings, retail chain rollouts, logistics hubs, and construction mega-projects',
+      stats: { metric: '500+ Hires', label: 'Single Campaign Capacity' },
+      keyFeatures: [
+        'Overseas sourcing campaigns across India, Philippines, Nepal, Egypt, and Eastern Europe',
+        'Structured digital assessment centers and high-volume candidate screening days',
+        'Bulk visa clearance, flight coordination, medicals, and group onboarding logistics',
+        'Dedicated project management team ensuring timeline and budget adherence'
+      ]
+    },
+    {
+      id: 'hr-outsourcing',
+      title: 'HR Outsourcing & Managed Services',
+      tagline: 'Complete outsourcing of payroll, employee lifecycle administration, and Employer of Record (EoR)',
+      description: 'Transfer non-core HR operations to our specialized specialists. Reduce overhead, eliminate regulatory liability, and guarantee flawless WPS payroll processing every cycle.',
+      icon: 'shield',
+      badge: 'OUTSOURCING',
+      timeline: 'Seamless Transition in 14 Days',
+      idealFor: 'Organizations looking to streamline overhead and ensure zero-error payroll compliance',
+      stats: { metric: '0% Error', label: 'WPS Payroll Accuracy' },
+      keyFeatures: [
+        'End-to-end monthly WPS payroll calculation, gratuity provisioning, and salary transfer',
+        'Complete employee lifecycle management (onboarding, leave tracking, exit clearance)',
+        'Group health insurance management, claim escalation, and broker negotiations',
+        'Employer of Record (EoR) services enabling rapid market hiring without local entity'
+      ]
+    },
+    {
+      id: 'rpo-embedded',
+      title: 'Recruitment Process Outsourcing (RPO)',
+      tagline: 'Embedded talent acquisition teams dedicated entirely to your company’s hiring targets',
+      description: 'Integrate senior recruiters directly into your internal workflows. Get the strategic horsepower of a high-performing talent function with lower cost-per-hire and accelerated hiring speed.',
+      icon: 'layers',
+      badge: 'RPO',
+      timeline: 'Dedicated Ongoing Partnership',
+      idealFor: 'Enterprises making 15 to 100+ strategic hires per year seeking lower cost-per-hire',
+      stats: { metric: '42%', label: 'Average Cost-Per-Hire Reduction' },
+      keyFeatures: [
+        'Dedicated Senior Talent Partner and Sourcer pods embedded in your ATS and communication channels',
+        'Customized employer branding campaigns, job descriptions, and recruitment marketing',
+        'Optimized applicant tracking workflows (Workday, Greenhouse, Lever, SAP SuccessFactors)',
+        'Comprehensive monthly talent analytics, hiring funnels, and executive reporting'
       ]
     }
   ]);
@@ -194,217 +228,213 @@ export class TalentService {
     }
   ]);
 
-  // Open Job Positions
+  // Talent Disciplines & Practice Roles (Specialized capabilities TruePath headhunts for enterprise clients)
   readonly jobs = signal<JobPosition[]>([
     {
-      id: 'JOB-901',
-      title: 'VP of Engineering (Distributed Systems & AI)',
+      id: 'ROLE-HR01',
+      title: 'Chief Human Resources Officer (CHRO) / HR VP',
       department: 'Executive',
-      location: 'San Francisco, CA (Hybrid / Remote Option)',
+      location: 'Dubai, UAE / GCC Regional',
       workType: 'Hybrid',
       employmentType: 'Executive Search',
       experienceLevel: 'VP / C-Level',
-      salaryRange: '$320,000 - $420,000',
-      equity: '0.75% - 1.5% Equity Package',
-      postedDate: '2 days ago',
+      salaryRange: 'AED 65,000 - 95,000 / month',
+      equity: 'Executive Long-term Incentive Plan (LTIP)',
+      postedDate: 'Active Mandate',
       isUrgent: true,
       isFeatured: true,
-      clientSector: 'AI Infrastructure & GPU Orchestration',
-      overview: 'Our client, an ultra-fast growing Series B AI infrastructure startup backed by top-tier venture funds, is seeking a transformational VP of Engineering to lead an organization of 60+ engineers.',
+      clientSector: 'Conglomerate & Regional Enterprise',
+      overview: 'Executive leadership mandate for visionary CHROs and VP People to design organization-wide talent architecture, leadership succession, and Emiratisation strategy across 1,000+ employee groups.',
       requirements: [
-        '10+ years of software engineering leadership in cloud-native or distributed platforms',
-        'Proven track record scaling teams from 30 to 100+ engineers',
-        'Deep architectural understanding of Kubernetes, GPU clustering, or low-latency stream processing',
-        'Exceptional mentorship and culture-building track record'
+        '12+ years of progressive HR leadership with proven C-suite executive presence in the Middle East / GCC',
+        'Track record leading large-scale organizational transformations and M&A integrations',
+        'Mastery of UAE Labour Law, Emiratisation quotas, and progressive retention frameworks',
+        'Demonstrated strategic capability in executive compensation and board governance'
       ],
       responsibilities: [
-        'Directly oversee Core Infrastructure, AI Platform, and DevSecOps engineering teams',
-        'Partner with CEO and CTO to define 3-year technical roadmap and architectural evolution',
-        'Establish engineering excellence, CI/CD reliability, and high-velocity shipping standards',
-        'Attract and retain world-class senior staff engineers and engineering managers'
+        'Advise CEO and Board on workforce planning, executive compensation, and leadership succession',
+        'Oversee comprehensive HR operating models across multiple business units',
+        'Spearhead high-impact employer branding and executive talent acquisition initiatives',
+        'Establish KPI frameworks for employee net promoter score (eNPS) and organizational resilience'
       ],
       benefits: [
-        'Comprehensive family health, dental & vision coverage with $0 deductible',
-        'Substantial equity grant with early liquidity provisions',
-        'Unlimited PTO with mandatory 3-week minimum',
-        'Annual $10,000 executive coaching & continuous education stipend'
+        'Executive tier medical coverage for family with VIP international hospital network',
+        'Performance bonus up to 40% of annual base',
+        'Executive housing and schooling allowance allocation'
       ]
     },
     {
-      id: 'JOB-902',
-      title: 'Principal Staff Software Engineer (Go / Rust)',
-      department: 'Engineering',
-      location: 'New York, NY / Remote (US & Canada)',
-      workType: 'Remote',
+      id: 'ROLE-HR02',
+      title: 'Senior HR Business Partner (Strategic HRBP)',
+      department: 'People & HR',
+      location: 'Dubai, UAE (DIFC / Downtown)',
+      workType: 'Hybrid',
       employmentType: 'Full-time',
-      experienceLevel: 'Principal',
-      salaryRange: '$240,000 - $310,000',
-      equity: 'Competitive Equity + Annual Bonus',
-      postedDate: '1 day ago',
+      experienceLevel: 'Senior',
+      salaryRange: 'AED 35,000 - 48,000 / month',
+      equity: 'Annual Discretionary Bonus',
+      postedDate: 'Active Mandate',
       isUrgent: true,
       isFeatured: true,
-      clientSector: 'High-Frequency Fintech & DeFi Infrastructure',
-      overview: 'Looking for a visionary systems architect to drive the next generation of sub-millisecond execution engines and decentralized settlement networks.',
+      clientSector: 'Financial Services & Fintech',
+      overview: 'Dedicated search for strategic HR Business Partners who act as trusted advisors to business unit heads, aligning human capital strategies with commercial objectives.',
       requirements: [
-        '8+ years of production experience in Go, Rust, or C++',
-        'Mastery of asynchronous networking, memory-efficient concurrency, and distributed consensus (Raft/Paxos)',
-        'Experience building systems processing 500,000+ operations per second',
-        'Track record of open-source contributions or technical whitepapers'
+        '6-10 years of dedicated HRBP experience in fast-paced corporate or high-growth technology environments',
+        'Strong expertise in talent management, performance calibrations, and employee relations',
+        'Demonstrated analytical mindset with HR metrics, retention modeling, and leveling systems',
+        'CIPD / SHRM certification highly preferred'
       ],
       responsibilities: [
-        'Architect and implement ultra-low-latency transaction ordering pipeline',
-        'Design fault-tolerant failover architectures across multiple AWS & GCP bare-metal zones',
-        'Conduct architectural design reviews and champion code quality standards',
-        'Mentor Senior and Staff engineers across global time zones'
+        'Partner with senior directors to execute departmental workforce planning and talent reviews',
+        'Coach line managers on high-performance feedback, leadership skills, and conflict resolution',
+        'Drive organizational design changes and restructuring initiatives seamlessly',
+        'Collaborate with Talent Acquisition pods to expedite senior specialist recruitment'
       ],
       benefits: [
-        '100% remote flexibility with home office setup budget ($3,500)',
-        'Quarterly performance bonuses in USD or stable asset allocations',
-        '401(k) with 6% uncapped company match',
-        'Annual global team retreat (Tokyo, Lisbon, Banff)'
+        'Premium DIFC corporate medical insurance',
+        'Hybrid working policy (2 days work from home)',
+        'Annual flight allowance and continuous professional development budget'
       ]
     },
     {
-      id: 'JOB-903',
-      title: 'Director of Product Management (Enterprise Data & ML)',
-      department: 'Product',
-      location: 'Austin, TX / London, UK',
+      id: 'ROLE-HR03',
+      title: 'Head of Talent Acquisition & Executive Sourcing',
+      department: 'People & HR',
+      location: 'Dubai & Riyadh (Dual Hub)',
       workType: 'Hybrid',
       employmentType: 'Full-time',
       experienceLevel: 'Director',
-      salaryRange: '$210,000 - $275,000',
-      equity: '0.3% - 0.6% Equity',
-      postedDate: '3 days ago',
+      salaryRange: 'AED 45,000 - 60,000 / month',
+      equity: 'Performance-linked Hiring Bonus Pool',
+      postedDate: 'Active Mandate',
+      isUrgent: true,
       isFeatured: true,
-      clientSector: 'Enterprise Data Mesh & Real-time Analytics',
-      overview: 'Champion the product vision for a premier enterprise data platform utilized by 35% of Fortune 100 financial and retail conglomerates.',
+      clientSector: 'Tech Scale-up & Digital Ecosystems',
+      overview: 'Specialized talent search for an impactful Head of Talent Acquisition to scale tech, product, and commercial departments across the UAE and Saudi Arabia.',
       requirements: [
-        '7+ years in technical B2B Product Management with 3+ years leading PM teams',
-        'Demonstrated success taking data/AI platform products from $10M to $50M+ ARR',
-        'Strong technical foundation in SQL, data warehousing, and LLM tooling integrations',
-        'Outstanding stakeholder management and executive storytelling capabilities'
+        '8+ years in full-cycle recruitment with at least 3 years leading multi-national recruitment teams',
+        'Proven expertise in passive executive headhunting and ATS optimization (Workday, Greenhouse, Ashby)',
+        'Deep knowledge of regional talent market nuances in the UAE and KSA (Saudization)',
+        'Strong employer branding and recruitment marketing portfolio'
       ],
       responsibilities: [
-        'Lead a team of 5 Senior and Lead Product Managers across data governance & pipelines',
-        'Translate complex enterprise customer needs into prioritized roadmap deliverables',
-        'Work closely with Go-To-Market and Solutions teams to accelerate deal velocity',
-        'Define key usage, retention, and monetization KPIs'
+        'Lead and mentor a team of 8 senior talent acquisition specialists and sourcers',
+        'Reduce average time-to-hire by 40% while raising pass-through interview bar',
+        'Establish direct talent pipelines for hard-to-fill AI, engineering, and executive roles',
+        'Partner with C-suite stakeholders on headcount forecasting and budget allocation'
       ],
       benefits: [
-        'Flexible hybrid schedule (2 days in-office)',
-        'Generous parental leave (18 weeks fully paid)',
-        'Health & wellness monthly subsidy ($300/mo)',
-        'Annual company equity refresh grants'
+        'Regional travel allowance & executive relocation support',
+        'Comprehensive family health & dental cover',
+        'Annual wellness & executive coaching subsidy'
       ]
     },
     {
-      id: 'JOB-904',
-      title: 'Lead Cloud Infrastructure & Kubernetes Architect',
-      department: 'Engineering',
-      location: 'Remote (EMEA / North America)',
-      workType: 'Remote',
+      id: 'ROLE-HR04',
+      title: 'Head of Total Rewards, Comp & Benefits (GCC)',
+      department: 'People & HR',
+      location: 'Dubai, UAE',
+      workType: 'Hybrid',
       employmentType: 'Full-time',
       experienceLevel: 'Lead',
-      salaryRange: '$190,000 - $245,000',
-      equity: 'Equity Grants Included',
-      postedDate: '4 days ago',
+      salaryRange: 'AED 40,000 - 55,000 / month',
+      equity: 'Annual Corporate Incentive Scheme',
+      postedDate: 'Active Mandate',
       isFeatured: false,
-      clientSector: 'Cybersecurity & Cloud Threat Detection',
-      overview: 'Lead the cloud platform infrastructure for a high-security automated threat remediation SaaS processing petabytes of network telemetry daily.',
+      clientSector: 'Enterprise Retail & E-Commerce',
+      overview: 'Recruiting seasoned Total Rewards specialists to architect competitive salary bands, short/long-term incentive schemes (STIP/LTIP), and regional benefits harmonisation.',
       requirements: [
-        '6+ years in DevOps, Platform Engineering, or SRE roles',
-        'Deep expertise with Kubernetes (EKS/GKE), Terraform, ArgoCD, and Prometheus/Grafana',
-        'Demonstrated experience managing multi-region multi-cloud infrastructures',
-        'SOC2 and ISO 27001 compliance hardening experience'
+        '7+ years specializing in Compensation & Benefits and Total Rewards in multinational firms',
+        'Advanced expertise in Mercer / Korn Ferry Hay grading methodologies and salary benchmarking',
+        'Proficiency in international payroll compliance, end-of-service gratuity schemes, and pensions',
+        'Exceptional financial modeling and executive presentation skills'
       ],
       responsibilities: [
-        'Design immutable infrastructure as code and zero-trust mesh architectures',
-        'Automate deployment pipelines to achieve 99.999% platform availability',
-        'Optimize multi-million dollar cloud compute spend and FinOps initiatives',
-        'Lead 24/7 on-call tier-3 escalations framework with high automation'
+        'Design regional compensation structures aligned with high-inflation and competitive talent markets',
+        'Conduct annual market benchmarking and salary review cycles for 2,500+ employees',
+        'Manage broker relationships and benefits renewals to optimize corporate spend',
+        'Advise leadership on executive package structuring and relocation policies'
       ],
       benefits: [
-        'Global remote contract or direct employee entity options',
-        'Top-spec MacBook Pro M-series + 4K dual display setup',
-        'Annual learning and conference budget ($4,000)',
-        'Private health insurance'
+        'Full medical coverage with international network',
+        'Flexible working hours & remote day provisions',
+        'Annual performance bonus'
       ]
     },
     {
-      id: 'JOB-905',
-      title: 'Head of People & Global Talent Acquisition',
-      department: 'People & HR',
-      location: 'London, UK / Hybrid',
-      workType: 'Hybrid',
-      employmentType: 'Full-time',
-      experienceLevel: 'Director',
-      salaryRange: '£140,000 - £180,000',
-      equity: 'Equity Options Pool',
-      postedDate: '5 days ago',
-      isFeatured: false,
-      clientSector: 'Next-Gen ClimateTech & Clean Energy SaaS',
-      overview: 'Shape the international people strategy, culture, and talent acquisition engine for an exciting mission-driven climate tech organization scaling across Europe and North America.',
-      requirements: [
-        '8+ years in progressive HR/People leadership, ideally in high-growth tech firms',
-        'Deep knowledge of international employment law (UK, EU, US)',
-        'Proven expertise in performance frameworks, leveling matrices, and remote work culture',
-        'Data-driven approach to retention, eNPS, and DEI benchmarks'
-      ],
-      responsibilities: [
-        'Oversee global HR operations, employee relations, and talent acquisition',
-        'Implement transparent leveling ladders and compensation frameworks',
-        'Drive employee engagement, manager training, and leadership coaching',
-        'Ensure rigorous compliance across international employment hubs'
-      ],
-      benefits: [
-        'Hybrid working in modern Central London office',
-        'Company electric vehicle salary sacrifice scheme',
-        'Enhanced pension contribution (8%)',
-        '28 days holiday + bank holidays'
-      ]
-    },
-    {
-      id: 'JOB-906',
-      title: 'Chief Financial Officer (CFO - High Growth SaaS)',
-      department: 'Executive',
-      location: 'New York, NY / Boston, MA',
+      id: 'ROLE-HR05',
+      title: 'VP of Engineering & Technology Architecture',
+      department: 'Engineering',
+      location: 'Dubai, UAE / Remote Worldwide',
       workType: 'Hybrid',
       employmentType: 'Executive Search',
       experienceLevel: 'VP / C-Level',
-      salaryRange: '$350,000 - $450,000',
-      equity: '1.2% - 2.0% Executive Equity Pool',
-      postedDate: 'Just now',
-      isUrgent: true,
-      isFeatured: true,
-      clientSector: 'B2B Enterprise Automation SaaS',
-      overview: 'Confidential mandate to recruit an experienced CFO with prior SaaS IPO or large-scale strategic M&A exit experience to lead financial strategy and investor relations.',
+      salaryRange: '$220,000 - $320,000 / year',
+      equity: '1.0% - 2.5% Equity Grant',
+      postedDate: 'Active Mandate',
+      isFeatured: false,
+      clientSector: 'AI & Cloud Infrastructure',
+      overview: 'Executive search mandate for visionary technology leaders to lead 50+ engineers in distributed systems, microservices, and high-throughput cloud platforms.',
       requirements: [
-        '12+ years in progressive financial leadership, including at least one CFO role in a $100M+ ARR tech company',
-        'Direct experience managing Series C/D rounds, debt facilities, or public S-1 filings',
-        'Exceptional command of SaaS unit economics, Rule of 40, and international tax transfer pricing',
-        'Track record building high-performance FP&A and accounting divisions'
+        '10+ years in software engineering with 5+ years managing senior engineering managers',
+        'Deep architectural track record in Go, Python, Kubernetes, and cloud-native microservices',
+        'Experience building fault-tolerant systems handling millions of daily transactions',
+        'Demonstrated ability to attract and hire world-class engineering talent'
       ],
       responsibilities: [
-        'Serve as trusted financial advisor to CEO and Board of Directors',
-        'Lead capital allocation, debt management, and global financial modeling',
-        'Drive investor relations and quarterly board financial governance',
-        'Prepare enterprise audit, compliance, and readiness for public markets'
+        'Oversee Core Platform, Data/AI, and Cloud Infrastructure engineering divisions',
+        'Partner with Product and Executive leadership on multi-year technical roadmaps',
+        'Champion developer productivity, CI/CD automation, and zero-downtime deployments',
+        'Drive security, SOC2, and data compliance standards across all systems'
       ],
       benefits: [
-        'Top-tier executive compensation package with liquidity roadmap',
-        'Executive health and wellness concierge plan',
-        'Dedicated corporate legal and tax advisory assistance'
+        'UAE Golden Visa sponsorship and executive relocation assistance',
+        'Full family international medical coverage',
+        'Home office setup allowance and high-end hardware budget'
+      ]
+    },
+    {
+      id: 'ROLE-HR06',
+      title: 'Senior Payroll & HR Operations Manager',
+      department: 'People & HR',
+      location: 'Dubai, UAE (Business Bay)',
+      workType: 'On-site',
+      employmentType: 'Full-time',
+      experienceLevel: 'Lead',
+      salaryRange: 'AED 28,000 - 38,000 / month',
+      equity: 'Quarterly Operations Bonus',
+      postedDate: 'Active Mandate',
+      isUrgent: false,
+      isFeatured: true,
+      clientSector: 'Logistics & Supply Chain Hub',
+      overview: 'Recruiting rigorous HR operations and payroll leads to oversee multi-country payroll execution, visa processing, and HRIS digitalization.',
+      requirements: [
+        '6+ years managing end-to-end payroll and HR operations for 500+ employees in UAE',
+        'Mastery of WPS (Wages Protection System), UAE Labour Law, and Ministry of Human Resources (MOHRE) regulations',
+        'Hands-on proficiency with major HRIS/ERP systems (SAP SuccessFactors, Oracle, Bayzat, Zoho)',
+        'Impeccable attention to detail and confidential data handling'
+      ],
+      responsibilities: [
+        'Direct monthly payroll calculations, deductions, and WPS compliance with zero error rate',
+        'Oversee employee onboarding, visa processing, and offboarding workflows',
+        'Implement HR automation tools to streamline leave, attendance, and expense tracking',
+        'Generate monthly HR analytics and workforce attrition reports for leadership'
+      ],
+      benefits: [
+        'Competitive tax-free monthly compensation',
+        'Private health insurance',
+        'Annual flight ticket allowance'
       ]
     }
   ]);
 
-  // Testimonials
+  // Testimonials (from Corporate Clients & Enterprise Partners)
   readonly testimonials = signal<Testimonial[]>([
     {
       id: 't1',
-      quote: 'TruePath transformed our talent strategy. When other agencies sent uncalibrated resumes, TruePath presented 3 candidates who were all exceptional. We hired two within 10 days.',
+      quote: 'TruePath transformed our talent strategy. When other agencies sent uncalibrated resumes, TruePath presented 3 pre-screened HR leaders who were all exceptional. We closed our CHRO and HRBP within 12 days.',
       author: 'Jonathan Sterling',
-      role: 'Chief Technology Officer',
+      role: 'Chief Technology Officer & Co-Founder',
       company: 'OmniVanguard Software',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
       type: 'Client',
@@ -412,12 +442,12 @@ export class TalentService {
     },
     {
       id: 't2',
-      quote: 'As an executive leader looking for my next challenge in Dubai, the TruePath team treated my career with unmatched respect and discretion. They connected me to an ideal VP role that aligned with my values.',
-      author: 'Dr. Alistair Chen',
-      role: 'VP of AI Research (Placed)',
-      company: 'Synthetix Biosystems',
+      quote: 'TruePath operates with true executive discretion. As a corporate group expanding across Dubai and Riyadh, their B2B model saved our hiring committee weeks of wasted interviews.',
+      author: 'Tariq Al-Hashimi',
+      role: 'Managing Director & Board Member',
+      company: 'Gulf Horizon Holdings',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-      type: 'Placed Candidate',
+      type: 'Enterprise Partner',
       rating: 5
     },
     {
@@ -432,8 +462,8 @@ export class TalentService {
     }
   ]);
 
-  // Candidate Submissions (saved in localStorage for persistence)
-  readonly applications = signal<CandidateApplication[]>(this.loadStoredApplications());
+  // Corporate Hiring Requirements (saved in localStorage for persistence)
+  readonly applications = signal<HiringRequirement[]>(this.loadStoredRequirements());
 
   // Consultation Requests
   readonly consultations = signal<ConsultationRequest[]>(this.loadStoredConsultations());
@@ -473,20 +503,46 @@ export class TalentService {
   });
 
   // Action methods
-  submitCandidateApplication(app: Omit<CandidateApplication, 'id' | 'referenceCode' | 'submittedAt' | 'status'>): CandidateApplication {
-    const referenceCode = 'NX-' + Math.floor(100000 + Math.random() * 900000);
-    const newApp: CandidateApplication = {
-      ...app,
-      id: 'app-' + Date.now(),
+  submitHiringRequirement(req: Omit<HiringRequirement, 'id' | 'referenceCode' | 'submittedAt' | 'status'>): HiringRequirement {
+    const referenceCode = 'TP-REQ-' + Math.floor(100000 + Math.random() * 900000);
+    const newReq: HiringRequirement = {
+      ...req,
+      id: 'req-' + Date.now(),
       referenceCode,
       submittedAt: new Date().toISOString(),
       status: 'Received'
     };
 
-    const updated = [newApp, ...this.applications()];
+    const updated = [newReq, ...this.applications()];
     this.applications.set(updated);
-    this.saveApplicationsToStorage(updated);
-    return newApp;
+    this.saveRequirementsToStorage(updated);
+    return newReq;
+  }
+
+  // Backward compatibility method
+  submitCandidateApplication(req: any): HiringRequirement {
+    return this.submitHiringRequirement({
+      companyName: req.companyName || 'Corporate Client (Online Submission)',
+      contactName: req.fullName || req.contactName || 'Hiring Manager',
+      workEmail: req.email || req.workEmail,
+      phone: req.phone,
+      companyLocation: req.location || req.companyLocation || 'Dubai, UAE',
+      industry: req.industry || 'Human Resources',
+      companySize: req.companySize || '50-250 employees',
+      roleTitle: req.desiredRole || req.roleTitle || 'HR Leadership Role',
+      discipline: req.industry || 'People & HR',
+      headcount: '1 Position',
+      seniorityLevel: req.seniorityLevel || 'Senior',
+      workModel: req.workTypePreference || 'Hybrid',
+      employmentType: 'Permanent Retained Search',
+      salaryBudget: req.expectedSalary || req.salaryBudget || 'Market Standard',
+      timeframe: req.noticePeriod || 'Within 30 Days',
+      jdFileName: req.cvFileName || req.jdFileName,
+      jdFileSize: req.cvFileSize || req.jdFileSize,
+      keySkills: req.skills || [],
+      roleOverview: req.coverNote || req.roleOverview,
+      isConfidential: true
+    });
   }
 
   submitConsultationRequest(req: Omit<ConsultationRequest, 'id' | 'createdAt'>): ConsultationRequest {
@@ -515,10 +571,10 @@ export class TalentService {
     });
   }
 
-  private loadStoredApplications(): CandidateApplication[] {
+  private loadStoredRequirements(): HiringRequirement[] {
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
-        const data = localStorage.getItem('nexus_candidate_applications');
+        const data = localStorage.getItem('truepath_company_requirements');
         if (data) return JSON.parse(data);
       }
     } catch (e) {
@@ -527,10 +583,10 @@ export class TalentService {
     return [];
   }
 
-  private saveApplicationsToStorage(apps: CandidateApplication[]) {
+  private saveRequirementsToStorage(reqs: HiringRequirement[]) {
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
-        localStorage.setItem('nexus_candidate_applications', JSON.stringify(apps));
+        localStorage.setItem('truepath_company_requirements', JSON.stringify(reqs));
       }
     } catch (e) {
       console.warn('Failed to save to localStorage', e);
@@ -540,7 +596,7 @@ export class TalentService {
   private loadStoredConsultations(): ConsultationRequest[] {
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
-        const data = localStorage.getItem('nexus_consultations');
+        const data = localStorage.getItem('truepath_consultations');
         if (data) return JSON.parse(data);
       }
     } catch (e) {
@@ -552,7 +608,7 @@ export class TalentService {
   private saveConsultationsToStorage(reqs: ConsultationRequest[]) {
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
-        localStorage.setItem('nexus_consultations', JSON.stringify(reqs));
+        localStorage.setItem('truepath_consultations', JSON.stringify(reqs));
       }
     } catch (e) {
       console.warn('Failed to save to localStorage', e);

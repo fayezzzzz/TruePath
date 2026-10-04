@@ -6,14 +6,28 @@
       <div class="ref-breadcrumb">
         <a routerLink="/">Home</a>
         <span class="bc-sep">/</span>
-        <a routerLink="/jobs">Candidates</a>
+        <a routerLink="/services">Employers</a>
         <span class="bc-sep">/</span>
-        <span class="bc-current">Register your CV</span>
+        <span class="bc-current">Submit Hiring Requirement</span>
       </div>
-      <h1 class="page-main-heading">Register your CV</h1>
+      <h1 class="page-main-heading">Submit Corporate Hiring Requirement</h1>
       <p class="page-main-sub">
-        Register your CV with us so we can get to know the real you. Our specialist HR recruitment consultants will review your profile for active and upcoming roles.
+        TruePath operates exclusively as a B2B executive search and HR recruitment consultancy for enterprises across Dubai, the GCC, and global markets. Tell us your hiring mandate below to receive a calibrated candidate shortlist.
       </p>
+    </div>
+  </section>
+
+  <!-- B2B Enterprise Notice Banner -->
+  <section class="b2b-notice-bar">
+    <div class="container">
+      <div class="notice-box-gold">
+        <div class="notice-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="notice-text">
+          <strong>Enterprise Portal Notice:</strong> TruePath is a dedicated B2B hiring partner. Direct individual candidate applications or CV submissions are not accepted. Our search practice headhunts and vets talent specifically tailored to verified corporate client requirements.
+        </div>
+      </div>
     </div>
   </section>
 
@@ -22,103 +36,162 @@
     <div class="container container-form">
       
       <div class="form-card-white">
-        <form [formGroup]="applicationForm" (ngSubmit)="onSubmitApplication()">
+        <form [formGroup]="requirementForm" (ngSubmit)="onSubmitRequirement()">
           
-          <!-- Step 1: Personal Details -->
+          <!-- Step 1: Company & Contact Information -->
           <div class="form-block">
-            <h2 class="block-title">1. Personal details</h2>
+            <h2 class="block-title">1. Company & Contact Information</h2>
             
             <div class="form-row-2">
               <div class="form-group">
-                <label class="form-label">Full name <span class="required">*</span></label>
-                <input type="text" formControlName="fullName" class="form-input" placeholder="e.g. John Smith">
-                @if (applicationForm.get('fullName')?.touched && applicationForm.get('fullName')?.errors) {
-                  <span class="form-error">Please enter your full name.</span>
+                <label class="form-label">Company / Organization Name <span class="required">*</span></label>
+                <input type="text" formControlName="companyName" class="form-input" placeholder="e.g. Al-Futtaim Group / TechCorp MENA">
+                @if (requirementForm.get('companyName')?.touched && requirementForm.get('companyName')?.errors) {
+                  <span class="form-error">Company name is required.</span>
                 }
               </div>
 
               <div class="form-group">
-                <label class="form-label">Email address <span class="required">*</span></label>
-                <input type="email" formControlName="email" class="form-input" placeholder="e.g. john.smith@example.com">
-                @if (applicationForm.get('email')?.touched && applicationForm.get('email')?.errors) {
-                  <span class="form-error">Please enter a valid email address.</span>
+                <label class="form-label">Contact Person / Hiring Manager <span class="required">*</span></label>
+                <input type="text" formControlName="contactName" class="form-input" placeholder="e.g. Tariq Al-Nuaimi (VP People)">
+                @if (requirementForm.get('contactName')?.touched && requirementForm.get('contactName')?.errors) {
+                  <span class="form-error">Please enter contact name.</span>
                 }
               </div>
             </div>
 
             <div class="form-row-2">
               <div class="form-group">
-                <label class="form-label">Phone number <span class="required">*</span></label>
-                <input type="tel" formControlName="phone" class="form-input" placeholder="e.g. +49 170 1234567">
-                @if (applicationForm.get('phone')?.touched && applicationForm.get('phone')?.errors) {
-                  <span class="form-error">Please enter your contact phone number.</span>
+                <label class="form-label">Work Email Address <span class="required">*</span></label>
+                <input type="email" formControlName="workEmail" class="form-input" placeholder="e.g. t.nuaimi@alfuttaim.ae">
+                @if (requirementForm.get('workEmail')?.touched && requirementForm.get('workEmail')?.errors) {
+                  <span class="form-error">Please enter a valid work corporate email.</span>
                 }
               </div>
 
               <div class="form-group">
-                <label class="form-label">Current location <span class="required">*</span></label>
-                <input type="text" formControlName="location" class="form-input" placeholder="e.g. Frankfurt, Germany / London, UK">
-                @if (applicationForm.get('location')?.touched && applicationForm.get('location')?.errors) {
-                  <span class="form-error">Location is required.</span>
-                }
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2: Role & Experience -->
-          <div class="form-block">
-            <h2 class="block-title">2. Professional preferences</h2>
-
-            <div class="form-row-2">
-              <div class="form-group">
-                <label class="form-label">Current job title <span class="required">*</span></label>
-                <input type="text" formControlName="currentRole" class="form-input" placeholder="e.g. HR Manager">
-                @if (applicationForm.get('currentRole')?.touched && applicationForm.get('currentRole')?.errors) {
-                  <span class="form-error">Current job title is required.</span>
-                }
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Desired job title / target role <span class="required">*</span></label>
-                <input type="text" formControlName="desiredRole" class="form-input" placeholder="e.g. Senior HR Business Partner">
-                @if (applicationForm.get('desiredRole')?.touched && applicationForm.get('desiredRole')?.errors) {
-                  <span class="form-error">Target role is required.</span>
+                <label class="form-label">Contact Phone / WhatsApp <span class="required">*</span></label>
+                <input type="tel" formControlName="phone" class="form-input" placeholder="e.g. +971 50 123 4567">
+                @if (requirementForm.get('phone')?.touched && requirementForm.get('phone')?.errors) {
+                  <span class="form-error">Please enter contact phone number.</span>
                 }
               </div>
             </div>
 
             <div class="form-row-3">
               <div class="form-group">
-                <label class="form-label">Primary discipline <span class="required">*</span></label>
+                <label class="form-label">Company Location / HQ <span class="required">*</span></label>
+                <input type="text" formControlName="companyLocation" class="form-input" placeholder="e.g. Dubai, UAE / Riyadh, KSA">
+                @if (requirementForm.get('companyLocation')?.touched && requirementForm.get('companyLocation')?.errors) {
+                  <span class="form-error">Location is required.</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Industry Sector <span class="required">*</span></label>
                 <select formControlName="industry" class="form-select">
-                  <option value="Human Resources">Human Resources & People</option>
-                  <option value="Talent Acquisition">Talent Acquisition & Staffing</option>
-                  <option value="Payroll & Rewards">Payroll, Comp & Benefits</option>
-                  <option value="HR Leadership">Executive & HR Leadership</option>
+                  <option value="Technology & Software">Technology & Software</option>
+                  <option value="Financial Services & Banking">Banking & Financial Services</option>
+                  <option value="Conglomerate & Real Estate">Conglomerate & Real Estate</option>
+                  <option value="Retail & E-Commerce">Retail & Consumer Goods</option>
+                  <option value="Healthcare & Life Sciences">Healthcare & Life Sciences</option>
+                  <option value="Logistics & Supply Chain">Logistics & Supply Chain</option>
+                  <option value="Government & Semi-Government">Government & Semi-Government</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label class="form-label">Experience level <span class="required">*</span></label>
-                <select formControlName="seniorityLevel" class="form-select">
-                  <option value="Entry / Specialist">Specialist (2-5 yrs)</option>
-                  <option value="Senior">Senior Specialist (5-8 yrs)</option>
-                  <option value="Lead / Manager">Manager / Head of HR</option>
-                  <option value="VP / C-Level">HR Director / VP / CHRO</option>
+                <label class="form-label">Company Headcount <span class="required">*</span></label>
+                <select formControlName="companySize" class="form-select">
+                  <option value="10-50 employees">10 - 50 employees (Seed/Series A)</option>
+                  <option value="50-250 employees">50 - 250 employees (Mid-Market)</option>
+                  <option value="250-1,000 employees">250 - 1,000 employees (Enterprise)</option>
+                  <option value="1,000+ employees">1,000+ employees (Multinational)</option>
                 </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Target compensation <span class="required">*</span></label>
-                <input type="text" formControlName="expectedSalary" class="form-input" placeholder="e.g. €75,000 - €90,000 / yr">
               </div>
             </div>
           </div>
 
-          <!-- Step 3: CV / Resume File Upload -->
+          <!-- Step 2: Role & Headcount Specifications -->
           <div class="form-block">
-            <h2 class="block-title">3. Upload your CV <span class="required">*</span></h2>
+            <h2 class="block-title">2. Role & Staffing Specifications</h2>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Role Title to Hire <span class="required">*</span></label>
+                <input type="text" formControlName="roleTitle" class="form-input" placeholder="e.g. Head of Talent Acquisition / HR Director">
+                @if (requirementForm.get('roleTitle')?.touched && requirementForm.get('roleTitle')?.errors) {
+                  <span class="form-error">Role title is required.</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Functional Practice / Discipline <span class="required">*</span></label>
+                <select formControlName="discipline" class="form-select">
+                  <option value="People & HR">Human Resources & People Leadership</option>
+                  <option value="Executive">Executive Search / C-Suite (CHRO, VP, CEO)</option>
+                  <option value="Engineering">Tech, AI & Engineering Leadership</option>
+                  <option value="Finance">Finance, Payroll & Total Rewards</option>
+                  <option value="Product">Product Management & Design</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row-3">
+              <div class="form-group">
+                <label class="form-label">Headcount / Openings <span class="required">*</span></label>
+                <select formControlName="headcount" class="form-select">
+                  <option value="1 Position">1 Position (Key Hire)</option>
+                  <option value="2-4 Positions">2 - 4 Positions</option>
+                  <option value="5-10 Positions">5 - 10 Positions (Department Expansion)</option>
+                  <option value="10+ Positions">10+ Positions (RPO / Project Scale)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Target Seniority Level <span class="required">*</span></label>
+                <select formControlName="seniorityLevel" class="form-select">
+                  <option value="Specialist">Specialist / Senior Specialist (3-6 yrs)</option>
+                  <option value="Senior / Lead">Lead / Manager (6-9 yrs)</option>
+                  <option value="Director / Head of">Director / Head of Department (9-13 yrs)</option>
+                  <option value="VP / C-Suite">VP / C-Level / Board Advisor (14+ yrs)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Target Hiring Timeframe <span class="required">*</span></label>
+                <select formControlName="timeframe" class="form-select">
+                  <option value="Immediate (< 14 Days)">Immediate / Urgent (&lt; 14 Days)</option>
+                  <option value="Within 30 Days">Within 30 Days</option>
+                  <option value="Next Quarter">Next Quarter Planning</option>
+                  <option value="Confidential Replacement">Confidential Replacement</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Work Model <span class="required">*</span></label>
+                <select formControlName="workModel" class="form-select">
+                  <option value="On-site Dubai">On-site Dubai / UAE</option>
+                  <option value="Hybrid">Hybrid (e.g. 3 Days Office / 2 Remote)</option>
+                  <option value="Remote">100% Remote / Distributed</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Target Compensation Budget / Package <span class="required">*</span></label>
+                <input type="text" formControlName="salaryBudget" class="form-input" placeholder="e.g. AED 40,000 - 55,000 / month">
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Job Spec / Mandate Brief Upload -->
+          <div class="form-block">
+            <h2 class="block-title">3. Job Description & Key Criteria</h2>
             
+            <p class="block-hint-text">Upload your existing Job Description (JD) or mandate specification document:</p>
+
             <div 
               class="ref-dropzone" 
               [class.dragover]="isDragging()"
@@ -130,12 +203,12 @@
               @if (!selectedFile()) {
                 <div class="dropzone-content">
                   <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#777777" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                  <p class="dropzone-main-text">Drag and drop your CV file here</p>
-                  <p class="dropzone-sub-text">Supported formats: PDF, DOC, DOCX (Max 10MB)</p>
+                  <p class="dropzone-main-text">Drag and drop company JD / Specification file here</p>
+                  <p class="dropzone-sub-text">Supported formats: PDF, DOC, DOCX (Max 15MB)</p>
                   
                   <label class="btn btn-outline btn-sm browse-btn">
-                    Browse files
-                    <input type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx" class="hidden-input">
+                    Browse document
+                    <input type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.txt" class="hidden-input">
                   </label>
                 </div>
               } @else {
@@ -145,27 +218,46 @@
                   </div>
                   <div class="file-info-text">
                     <div class="chosen-name">{{ fileName() }}</div>
-                    <div class="chosen-size">{{ fileSize() }} • Ready to submit</div>
+                    <div class="chosen-size">{{ fileSize() }} • Ready for practice partner review</div>
                   </div>
                   <button type="button" class="btn-remove" (click)="removeFile()">Remove</button>
                 </div>
               }
             </div>
+
+            <div class="form-group mt-4">
+              <label class="form-label">Mandate Overview & Must-Have Candidate Criteria</label>
+              <textarea formControlName="roleOverview" class="form-textarea" placeholder="Detail any specific industry background, leadership competencies, Emiratisation requirements, or reporting lines..."></textarea>
+            </div>
           </div>
 
-          <!-- Step 4: Additional Notes & Consent -->
+          <!-- Step 4: Engagement Type & Confidentiality -->
           <div class="form-block">
-            <h2 class="block-title">4. Additional comments & privacy</h2>
+            <h2 class="block-title">4. Engagement Preferences & Discretion</h2>
 
-            <div class="form-group">
-              <label class="form-label">Cover note / What you are looking for (optional)</label>
-              <textarea formControlName="coverNote" class="form-textarea" placeholder="Describe your career goals, preferred work culture, or notice period..."></textarea>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Preferred Engagement Model <span class="required">*</span></label>
+                <select formControlName="employmentType" class="form-select">
+                  <option value="Permanent Retained Search">Retained Executive Search (Exclusive & Guaranteed)</option>
+                  <option value="Permanent Contingency">Specialized Contingency Search</option>
+                  <option value="Embedded RPO Pod">Embedded Talent Partner / RPO (Volume Hiring)</option>
+                  <option value="Interim Leadership">Interim Executive / Fractional Contractor</option>
+                </select>
+              </div>
+
+              <div class="confidential-box-wrap">
+                <label class="toggle-checkbox-label">
+                  <input type="checkbox" formControlName="isConfidential">
+                  <span><strong>Strict Confidential Mandate</strong> (Unannounced / confidential replacement search)</span>
+                </label>
+              </div>
             </div>
 
             <div class="consent-box">
               <label class="consent-label">
-                <input type="checkbox" formControlName="consentData">
-                <span>I agree that TruePath HR Solutions (TruePath ventures L.L.C-FZ) may process my personal details and CV for recruitment purposes in accordance with the Privacy Policy.</span>
+                <input type="checkbox" formControlName="consentTerms">
+                <span>I confirm that I represent the employer named above and authorize TruePath HR Solutions (TruePath ventures L.L.C-FZ) to review this hiring requirement under our enterprise confidentiality standard.</span>
               </label>
             </div>
           </div>
@@ -173,7 +265,7 @@
           <!-- Submit Button -->
           <div class="submit-action-row">
             <button type="submit" class="btn btn-coral btn-lg submit-btn">
-              Register your CV
+              Submit Corporate Requirement
             </button>
           </div>
 
@@ -184,27 +276,27 @@
   </section>
 
   <!-- Confirmation Modal -->
-  @if (submissionSuccess(); as app) {
+  @if (submissionSuccess(); as req) {
     <div class="modal-overlay" (click)="closeSuccessModal()">
       <div class="ref-modal-card" (click)="$event.stopPropagation()">
         <div class="modal-badge-icon">
           ✓
         </div>
-        <h2>Thank you for registering your CV</h2>
+        <h2>Hiring Mandate Logged</h2>
         <p class="modal-sub">
-          We have received your application. Your candidate registration reference is:
+          We have registered the hiring requirement for <strong>{{ req.companyName }}</strong> ({{ req.roleTitle }}). Your mandate tracking code is:
         </p>
 
         <div class="ref-number-box">
-          {{ app.referenceCode }}
+          {{ req.referenceCode }}
         </div>
 
         <p class="modal-note">
-          One of our specialized HR recruitment consultants will review your CV and be in touch as soon as a suitable opportunity arises.
+          A Senior Practice Partner from TruePath HR Solutions (Dubai HQ) will review your specifications and contact <strong>{{ req.contactName }}</strong> within 4 business hours with initial talent calibration.
         </p>
 
         <button type="button" class="btn btn-dark w-full" (click)="closeSuccessModal()">
-          Close
+          Close & Return
         </button>
       </div>
     </div>

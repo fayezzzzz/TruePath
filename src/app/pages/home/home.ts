@@ -15,12 +15,12 @@ export class HomeComponent {
   private readonly router = inject(Router);
 
   searchTitle = '';
-  searchLocation = '';
+  searchDiscipline = '';
 
   executeSearch() {
     this.talentService.updateSearchFilter({
-      query: this.searchTitle || this.searchLocation,
-      department: '',
+      query: this.searchTitle,
+      department: this.searchDiscipline,
       workType: ''
     });
     this.router.navigate(['/jobs']);
