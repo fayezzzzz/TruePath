@@ -50,8 +50,18 @@ export class PortfolioComponent {
       sector: 'Fire & Safety',
       icon: 'fire-safety',
       description: 'Genius International Co.W.L.L is a safety and security solutions provider headquartered in Doha, Qatar. Genius international is future focused on emerging 3rd Platform technologies and deliver valued services to our clients based on proven experience.',
-      bgImage: 'assets/genius_bgfree.png',
+      bgImage: 'assets/genius-logo.jpeg',
       site: 'https://geniuswll.com/'
+    },
+    {
+      id: 'haulmaxx',
+      name: 'Haulmaxx Engineering India Pvt Ltd ',
+      badge: 'Engineering & Manufactering',
+      sector: 'Engineering & Manufactering',
+      icon: 'truck',
+      description: 'Haulmax Engineering India Pvt Ltd (HEIPL) is a leading Indian company in the engineering & manufacturing sector specializedin design & manufacture of Trailers, Bulk Pressure tankers, Tip Trailers & Special Trailers for transporters, for Indian and export markets.',
+      bgImage: 'assets/haulmaxx.png',
+      site: ''
     },
   ]);
 
