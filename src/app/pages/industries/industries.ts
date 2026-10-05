@@ -102,7 +102,7 @@ export class IndustriesComponent {
       name: 'Energy & Utilities',
       icon: 'zap',
       description: 'Providing strategic talent for solar and renewable energy, power utilities, smart grids, and corporate sustainability initiatives.',
-      bgImage: 'https://images.unsplash.com/photo-1509391365360-2e959784a276?w=600&auto=format&fit=crop&q=80'
+      bgImage: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&auto=format&fit=crop&q=80'
     }
   ]);
 

@@ -43,23 +43,6 @@ export class TalentService {
       ]
     },
     {
-      id: 'pro-gro-services',
-      title: 'PRO & GRO Government Liaison',
-      tagline: 'End-to-end UAE government relations, visa processing, licensing, and regulatory compliance',
-      description: 'Navigate UAE government entities with total confidence. Our dedicated PRO and GRO specialists handle corporate visas, labour approvals, trade license renewals, and official attestations without delay.',
-      icon: 'file-text',
-      badge: 'PRO & GRO',
-      timeline: 'Express Processing',
-      idealFor: 'Multinationals, newly established UAE entities, and enterprises needing compliant visa operations',
-      stats: { metric: '100%', label: 'Regulatory Compliance Track Record' },
-      keyFeatures: [
-        'Fast-track employment residence visas, Golden Visas, and mission visas',
-        'MOHRE quotas, Tasheel document processing, Amer and GDRFA clearances',
-        'Corporate trade license issuance, amendments, branch registration, and renewals',
-        'Embassy document legalizations, MOFA attestations, and corporate translations'
-      ]
-    },
-    {
       id: 'executive-search',
       title: 'Executive Search & Headhunting',
       tagline: 'Confidential retained search for transformational C-Suite, Board, and Managing Director appointments',

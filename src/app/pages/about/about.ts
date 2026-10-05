@@ -74,9 +74,9 @@ export class AboutComponent {
     company: 'TruePath Ventures L.L.C',
     location: 'Dubai, United Arab Emirates',
     avatar: 'assets/md-profile.png',
-    quote: 'TruePath was founded with a clear vision: to elevate executive recruitment from a transactional process into a strategic, high-trust partnership for GCC enterprises.',
+    quote: 'TruePath was founded on a simple conviction: the right leader doesn’t just fill a role, they shape the future of an enterprise. We transform executive recruitment into a strategic, high-trust partnership built to identify, attract, and secure the leaders GCC businesses need to thrive.',
     bio: [
-      'With extensive experience in executive search, corporate human resources, and business strategy across the UAE and GCC, Fayez leads TruePath Ventures with a focus on delivering excellence, precision, and compliance.',
+      'With extensive experience in executive search, corporate human resources, and business strategy across the UAE and GCC, Leads TruePath Ventures with a focus on delivering excellence, precision, and compliance.',
       'Under the leadership, TruePath has established specialized practice divisions spanning Hospitality, IT & Telecom, Banking & Finance, Logistics, Healthcare, Retail, and Construction, serving premier conglomerates, multinational corporations, and high-growth enterprises.',
       'Committed to ethical headhunting standards, Emiratisation advancement, and long-term client relationships rooted in mutual transparency, discretion, and measurable business impact.'
     ],

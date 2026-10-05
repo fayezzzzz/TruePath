@@ -57,7 +57,7 @@ export class BlogsComponent {
       authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
       publishedDate: 'September 28, 2026',
       readTime: '7 min read',
-      coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&auto=format&fit=crop&q=80',
+      coverImage: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=700&auto=format&fit=crop&q=80',
       excerpt: 'How leading enterprises and family offices in Dubai and Riyadh are structuring competitive long-term incentive plans and cross-border relocation packages to attract C-suite talent.',
       tags: ['Executive Compensation', 'Golden Visa', 'Total Rewards', 'C-Suite Hiring'],
       isFeatured: true,
