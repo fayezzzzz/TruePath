@@ -74,7 +74,7 @@ export class AboutComponent {
     company: 'TruePath Ventures L.L.C',
     location: 'Dubai, United Arab Emirates',
     avatar: 'assets/md-profile.png',
-    quote: 'TruePath was founded on a simple conviction: the right leader doesn’t just fill a role, they shape the future of an enterprise. We transform executive recruitment into a strategic, high-trust partnership built to identify, attract, and secure the leaders GCC businesses need to thrive.',
+    quote: 'At TruePath, we believe leadership isn’t just about filling a seat; it’s about engineering the future of an enterprise. In a world of hyper-customized business needs, traditional executive search is no longer enough. We are pioneering a new era of HR transformation—combining agile mechanisms with deep market intelligence to secure the exact talent a GCC enterprise needs. By streamlining the search lifecycle, we cut through the noise, significantly reducing time-to-hire and acquisition costs, while delivering transformational leaders who drive lasting growth.',
     bio: [
       'With extensive experience in executive search, corporate human resources, and business strategy across the UAE and GCC, Leads TruePath Ventures with a focus on delivering excellence, precision, and compliance.',
       'Under the leadership, TruePath has established specialized practice divisions spanning Hospitality, IT & Telecom, Banking & Finance, Logistics, Healthcare, Retail, and Construction, serving premier conglomerates, multinational corporations, and high-growth enterprises.',
