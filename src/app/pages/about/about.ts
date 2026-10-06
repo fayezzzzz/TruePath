@@ -69,7 +69,7 @@ export class AboutComponent {
   ]);
 
   readonly managingDirector = signal({
-    name: 'Sheel Shafeek',
+    name: 'Sheel Shafiek',
     title: 'Founder & Managing Director',
     company: 'TruePath Ventures L.L.C',
     location: 'Dubai, United Arab Emirates',
